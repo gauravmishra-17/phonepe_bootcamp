@@ -30,15 +30,22 @@ class AppBarViewController: UIViewController {
         let filterText = UILabel()
         filterText.textAlignment = .right
         filterText.text = "Filter"
-        filterText.font = .systemFont(ofSize: 14)
+        filterText.font = .systemFont(ofSize: 16)
         filterText.textColor = UIColor(hexString: "#5DB075")
         filterText.frame = CGRect(x: 304, y: 35, width: 66, height: 50)
         self.view.addSubview(filterText)
         
+        
         //searchBar in appBar
         let searchBar = UISearchBar()
-        searchBar.tintColor = .white
-        searchBar.frame = CGRect(x: 34, y: 72, width: 343, height: 50)
+//        searchBar.tintColor = .white
+        searchBar.frame = CGRect(x: 34, y: 100, width: 343, height: 50)
+        searchBar.backgroundColor = .white
+        searchBar.searchTextField.backgroundColor = .clear
+        searchBar.layer.cornerRadius = 20
+        searchBar.placeholder = "Search"
+        searchBar.clipsToBounds = true
+
         self.view.addSubview(searchBar)
 
     }

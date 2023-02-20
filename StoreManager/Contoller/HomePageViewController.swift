@@ -33,6 +33,7 @@ class HomePageViewController: UITabBarController {
         
         self.setViewControllers([tableViewController, collectionViewController], animated: true)
         
+        //parse and get all items in the tab controller
         guard let tabs = self.tabBar.items else {
             return
         }
@@ -40,6 +41,7 @@ class HomePageViewController: UITabBarController {
         let tabBarImageItem = ["tablecells","square.grid.2x2"]
         let tabBarSelectedImageItem = ["tablecells.fill", "square.grid.2x2.fill"]
 
+        //set image and colo according to selection status of tab
         for i in 0..<tabs.count {
             tabs[i].image = UIImage(systemName: tabBarImageItem[i])
             tabs[i].selectedImage = UIImage(systemName: tabBarSelectedImageItem[i])
