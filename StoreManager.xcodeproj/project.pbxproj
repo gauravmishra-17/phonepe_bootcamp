@@ -9,7 +9,7 @@
 /* Begin PBXBuildFile section */
 		8D454815299CDF8800A59570 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D454814299CDF8800A59570 /* AppDelegate.swift */; };
 		8D454817299CDF8800A59570 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D454816299CDF8800A59570 /* SceneDelegate.swift */; };
-		8D454819299CDF8800A59570 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D454818299CDF8800A59570 /* ViewController.swift */; };
+		8D454819299CDF8800A59570 /* HomePageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D454818299CDF8800A59570 /* HomePageViewController.swift */; };
 		8D45481E299CDF8A00A59570 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8D45481D299CDF8A00A59570 /* Assets.xcassets */; };
 		8D454821299CDF8A00A59570 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8D45481F299CDF8A00A59570 /* LaunchScreen.storyboard */; };
 		8D45482C299CDF8B00A59570 /* StoreManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D45482B299CDF8B00A59570 /* StoreManagerTests.swift */; };
@@ -21,6 +21,9 @@
 		8D454855299DD6E700A59570 /* ItemListDto.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D454854299DD6E700A59570 /* ItemListDto.swift */; };
 		8D454857299DDBB400A59570 /* ItemsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D454856299DDBB400A59570 /* ItemsService.swift */; };
 		8D454859299E088700A59570 /* ResultDto.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D454858299E088700A59570 /* ResultDto.swift */; };
+		8D45485D29A3269B00A59570 /* ItemsInTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D45485C29A3269B00A59570 /* ItemsInTableView.swift */; };
+		8D45485F29A3273B00A59570 /* ItemsInCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D45485E29A3273B00A59570 /* ItemsInCollectionView.swift */; };
+		8D45486329A32EB800A59570 /* AppBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D45486229A32EB800A59570 /* AppBarViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -44,7 +47,7 @@
 		8D454811299CDF8800A59570 /* StoreManager.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = StoreManager.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8D454814299CDF8800A59570 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		8D454816299CDF8800A59570 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		8D454818299CDF8800A59570 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		8D454818299CDF8800A59570 /* HomePageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomePageViewController.swift; sourceTree = "<group>"; };
 		8D45481D299CDF8A00A59570 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		8D454820299CDF8A00A59570 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		8D454822299CDF8A00A59570 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -59,6 +62,9 @@
 		8D454854299DD6E700A59570 /* ItemListDto.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemListDto.swift; sourceTree = "<group>"; };
 		8D454856299DDBB400A59570 /* ItemsService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemsService.swift; sourceTree = "<group>"; };
 		8D454858299E088700A59570 /* ResultDto.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultDto.swift; sourceTree = "<group>"; };
+		8D45485C29A3269B00A59570 /* ItemsInTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemsInTableView.swift; sourceTree = "<group>"; };
+		8D45485E29A3273B00A59570 /* ItemsInCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemsInCollectionView.swift; sourceTree = "<group>"; };
+		8D45486229A32EB800A59570 /* AppBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppBarViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -114,7 +120,6 @@
 				8D454844299DCC0500A59570 /* Model */,
 				8D454814299CDF8800A59570 /* AppDelegate.swift */,
 				8D454816299CDF8800A59570 /* SceneDelegate.swift */,
-				8D454818299CDF8800A59570 /* ViewController.swift */,
 				8D45481D299CDF8A00A59570 /* Assets.xcassets */,
 				8D45481F299CDF8A00A59570 /* LaunchScreen.storyboard */,
 				8D454822299CDF8A00A59570 /* Info.plist */,
@@ -158,6 +163,10 @@
 		8D454846299DCC9700A59570 /* Contoller */ = {
 			isa = PBXGroup;
 			children = (
+				8D454818299CDF8800A59570 /* HomePageViewController.swift */,
+				8D45485C29A3269B00A59570 /* ItemsInTableView.swift */,
+				8D45485E29A3273B00A59570 /* ItemsInCollectionView.swift */,
+				8D45486229A32EB800A59570 /* AppBarViewController.swift */,
 			);
 			path = Contoller;
 			sourceTree = "<group>";
@@ -349,8 +358,11 @@
 				8D45484F299DD41800A59570 /* Item.swift in Sources */,
 				8D454855299DD6E700A59570 /* ItemListDto.swift in Sources */,
 				8D454851299DD50200A59570 /* ItemList.swift in Sources */,
-				8D454819299CDF8800A59570 /* ViewController.swift in Sources */,
+				8D454819299CDF8800A59570 /* HomePageViewController.swift in Sources */,
 				8D454815299CDF8800A59570 /* AppDelegate.swift in Sources */,
+				8D45485F29A3273B00A59570 /* ItemsInCollectionView.swift in Sources */,
+				8D45485D29A3269B00A59570 /* ItemsInTableView.swift in Sources */,
+				8D45486329A32EB800A59570 /* AppBarViewController.swift in Sources */,
 				8D454853299DD6CF00A59570 /* ItemDto.swift in Sources */,
 				8D454817299CDF8800A59570 /* SceneDelegate.swift in Sources */,
 			);
