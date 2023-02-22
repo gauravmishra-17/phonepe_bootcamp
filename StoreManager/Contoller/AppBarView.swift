@@ -8,6 +8,9 @@
 import UIKit
 
 class AppBarView: UIView {
+    
+    var titleUI :UIView = UIView()
+    var filterUI :UIView = UIView()
 
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -26,6 +29,25 @@ class AppBarView: UIView {
     func createAppBarView(){
         
         //set background color and size of appbar
+        createBackground()
+        
+        //create Title text
+        createTitle()
+        
+        //create Filter text
+        createFilter()
+        
+        //create Search bar UI
+        createSearchBar()
+        
+        
+        NSLayoutConstraint.activate(self.constraints)
+
+    }
+    
+    
+    func createBackground()
+    {
         let backgroundView = UIView()
         backgroundView.backgroundColor = UIColor(hexString: "#E6E9F6")
         self.addSubview(backgroundView)
@@ -47,15 +69,71 @@ class AppBarView: UIView {
         self.addConstraint(constraint3)
         self.addConstraint(constraint4)
         
-        NSLayoutConstraint.activate(self.constraints)
+    }
+    
+   func  createTitle()
+    {
+        let titleView = UILabel()
+        titleView.text = "Explore"
+        titleView.font = .systemFont(ofSize: 18,weight: .bold)
+        self.addSubview(titleView)
         
+        titleView.translatesAutoresizingMaskIntoConstraints = false
         
+        let constraint1 = NSLayoutConstraint(item: titleView, attribute: .leading, relatedBy: .equal, toItem: self, attribute: .leading, multiplier: 1, constant: 49)
+    
+        let constraint2 = NSLayoutConstraint(item: titleView, attribute: .top, relatedBy: .equal, toItem: self, attribute: .top, multiplier: 1, constant: 35)
         
-        //create Title text
+        self.addConstraint(constraint1)
+        self.addConstraint(constraint2)
         
+        titleUI = titleView
+    }
+    
+    func createFilter()
+    {
+        let filterView = UILabel()
+        filterView.text = "Filter"
+        filterView.font = .systemFont(ofSize: 16)
+        filterView.textColor = UIColor(hexString: "#5DB075")
+        self.addSubview(filterView)
         
-        //create Filter text
-        //create Search bar UI
+        filterView.translatesAutoresizingMaskIntoConstraints = false
+        
+        let constraint1 = NSLayoutConstraint(item: filterView, attribute: .leading, relatedBy: .equal, toItem: self.titleUI, attribute: .trailing, multiplier: 1, constant: 223)
+        
+        let constraint2 = NSLayoutConstraint(item: filterView, attribute: .top, relatedBy: .equal, toItem: self, attribute: .top, multiplier: 1, constant: 37)
+        
+        self.addConstraint(constraint1)
+        self.addConstraint(constraint2)
+    }
+    
+   func  createSearchBar()
+    {
+        let searchBarView = UISearchBar()
+        
+        searchBarView.backgroundColor = .white
+        searchBarView.searchTextField.backgroundColor = .clear
+        searchBarView.layer.cornerRadius = 20
+        searchBarView.placeholder = "Search"
+        searchBarView.clipsToBounds = true
+        self.addSubview(searchBarView)
+        
+        searchBarView.translatesAutoresizingMaskIntoConstraints = false
+
+        let constraint1 = NSLayoutConstraint(item: searchBarView, attribute: .leading, relatedBy: .equal, toItem: self, attribute: .leading, multiplier: 1, constant: 34)
+
+        let constraint2 = NSLayoutConstraint(item: searchBarView, attribute: .top, relatedBy: .equal, toItem: self, attribute: .top, multiplier: 1, constant: 72)
+        
+        let constraint3 = NSLayoutConstraint(item: searchBarView, attribute: .height, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1, constant: 50)
+        let constraint4 = NSLayoutConstraint(item: searchBarView, attribute: .width, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1, constant: 343)
+
+        self.addConstraint(constraint1)
+        self.addConstraint(constraint2)
+        self.addConstraint(constraint3)
+        self.addConstraint(constraint4)
+//
+        
     }
 
 }
