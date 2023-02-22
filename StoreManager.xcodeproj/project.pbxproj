@@ -21,9 +21,11 @@
 		8D454855299DD6E700A59570 /* ItemListDto.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D454854299DD6E700A59570 /* ItemListDto.swift */; };
 		8D454857299DDBB400A59570 /* ItemsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D454856299DDBB400A59570 /* ItemsService.swift */; };
 		8D454859299E088700A59570 /* ResultDto.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D454858299E088700A59570 /* ResultDto.swift */; };
-		8D45485D29A3269B00A59570 /* ItemsInTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D45485C29A3269B00A59570 /* ItemsInTableView.swift */; };
-		8D45485F29A3273B00A59570 /* ItemsInCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D45485E29A3273B00A59570 /* ItemsInCollectionView.swift */; };
-		8D45486329A32EB800A59570 /* AppBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D45486229A32EB800A59570 /* AppBarViewController.swift */; };
+		8D45485D29A3269B00A59570 /* ItemsInTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D45485C29A3269B00A59570 /* ItemsInTableViewController.swift */; };
+		8D45485F29A3273B00A59570 /* ItemsInCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D45485E29A3273B00A59570 /* ItemsInCollectionViewController.swift */; };
+		8D45486529A3506F00A59570 /* UIViewExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D45486429A3506F00A59570 /* UIViewExt.swift */; };
+		8D45486729A3535C00A59570 /* ItemTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D45486629A3535C00A59570 /* ItemTableViewCell.swift */; };
+		8D45486929A5ECBB00A59570 /* AppBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D45486829A5ECBB00A59570 /* AppBarView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -62,9 +64,11 @@
 		8D454854299DD6E700A59570 /* ItemListDto.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemListDto.swift; sourceTree = "<group>"; };
 		8D454856299DDBB400A59570 /* ItemsService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemsService.swift; sourceTree = "<group>"; };
 		8D454858299E088700A59570 /* ResultDto.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultDto.swift; sourceTree = "<group>"; };
-		8D45485C29A3269B00A59570 /* ItemsInTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemsInTableView.swift; sourceTree = "<group>"; };
-		8D45485E29A3273B00A59570 /* ItemsInCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemsInCollectionView.swift; sourceTree = "<group>"; };
-		8D45486229A32EB800A59570 /* AppBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppBarViewController.swift; sourceTree = "<group>"; };
+		8D45485C29A3269B00A59570 /* ItemsInTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemsInTableViewController.swift; sourceTree = "<group>"; };
+		8D45485E29A3273B00A59570 /* ItemsInCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemsInCollectionViewController.swift; sourceTree = "<group>"; };
+		8D45486429A3506F00A59570 /* UIViewExt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewExt.swift; sourceTree = "<group>"; };
+		8D45486629A3535C00A59570 /* ItemTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemTableViewCell.swift; sourceTree = "<group>"; };
+		8D45486829A5ECBB00A59570 /* AppBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppBarView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -164,9 +168,11 @@
 			isa = PBXGroup;
 			children = (
 				8D454818299CDF8800A59570 /* HomePageViewController.swift */,
-				8D45485C29A3269B00A59570 /* ItemsInTableView.swift */,
-				8D45485E29A3273B00A59570 /* ItemsInCollectionView.swift */,
-				8D45486229A32EB800A59570 /* AppBarViewController.swift */,
+				8D45485C29A3269B00A59570 /* ItemsInTableViewController.swift */,
+				8D45485E29A3273B00A59570 /* ItemsInCollectionViewController.swift */,
+				8D45486429A3506F00A59570 /* UIViewExt.swift */,
+				8D45486629A3535C00A59570 /* ItemTableViewCell.swift */,
+				8D45486829A5ECBB00A59570 /* AppBarView.swift */,
 			);
 			path = Contoller;
 			sourceTree = "<group>";
@@ -353,6 +359,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8D45486529A3506F00A59570 /* UIViewExt.swift in Sources */,
 				8D454859299E088700A59570 /* ResultDto.swift in Sources */,
 				8D454857299DDBB400A59570 /* ItemsService.swift in Sources */,
 				8D45484F299DD41800A59570 /* Item.swift in Sources */,
@@ -360,11 +367,12 @@
 				8D454851299DD50200A59570 /* ItemList.swift in Sources */,
 				8D454819299CDF8800A59570 /* HomePageViewController.swift in Sources */,
 				8D454815299CDF8800A59570 /* AppDelegate.swift in Sources */,
-				8D45485F29A3273B00A59570 /* ItemsInCollectionView.swift in Sources */,
-				8D45485D29A3269B00A59570 /* ItemsInTableView.swift in Sources */,
-				8D45486329A32EB800A59570 /* AppBarViewController.swift in Sources */,
+				8D45485F29A3273B00A59570 /* ItemsInCollectionViewController.swift in Sources */,
+				8D45485D29A3269B00A59570 /* ItemsInTableViewController.swift in Sources */,
 				8D454853299DD6CF00A59570 /* ItemDto.swift in Sources */,
+				8D45486729A3535C00A59570 /* ItemTableViewCell.swift in Sources */,
 				8D454817299CDF8800A59570 /* SceneDelegate.swift in Sources */,
+				8D45486929A5ECBB00A59570 /* AppBarView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

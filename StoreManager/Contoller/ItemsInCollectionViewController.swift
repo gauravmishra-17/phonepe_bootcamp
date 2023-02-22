@@ -7,7 +7,7 @@
 
 import UIKit
 
-class ItemsInCollectionView: UIViewController {
+class ItemsInCollectionViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
