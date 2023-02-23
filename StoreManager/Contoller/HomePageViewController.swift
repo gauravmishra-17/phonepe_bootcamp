@@ -11,6 +11,9 @@ import Combine
 //create root view controller as a Container View Controller - of type - UITabBarController
 class HomePageViewController: UITabBarController {
     
+    
+    var appbar = UIView()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -20,7 +23,44 @@ class HomePageViewController: UITabBarController {
         view.insetsLayoutMarginsFromSafeArea = false
         
         //add appBar
-        let appbar = AppBarView()
+        createAppBar()
+        
+        //add bottomBar
+        createBottomBar()
+        
+        //activate constraints
+        NSLayoutConstraint.activate(self.view.constraints)
+        
+    }
+    
+    
+    private func createBottomBar() {
+        
+        //setup viewControllers to point at the tabs
+        var itemsInTableViewController = ItemsInTableViewController()
+        var itemsInCollectionViewController = ItemsInCollectionViewController()
+        
+        self.setViewControllers([itemsInTableViewController,itemsInCollectionViewController, ItemsInCollectionViewController(),ItemsInCollectionViewController(),ItemsInCollectionViewController() ], animated: true)
+        
+        
+        
+        //parse and get all items in the tab controller
+        guard let tabs = self.tabBar.items else {
+            return
+        }
+        
+        
+        //set image and color according to selection status of tab
+        let configuration = UIImage.SymbolConfiguration(hierarchicalColor: UIColor(hexString: "#5DB075"))
+        var circle = UIImage(systemName: "circle.fill", withConfiguration: configuration)
+        for i in 0..<tabs.count {
+            tabs[i].image = UIImage(systemName: "circle" )
+            tabs[i].selectedImage = circle
+        }
+    }
+    
+    private func createAppBar() {
+        appbar = AppBarView()
         view.addSubview(appbar)
         appbar.translatesAutoresizingMaskIntoConstraints = false
         
@@ -33,32 +73,6 @@ class HomePageViewController: UITabBarController {
         self.view.addConstraint(const2)
         self.view.addConstraint(const3)
         self.view.addConstraint(const4)
-        
-        NSLayoutConstraint.activate(self.view.constraints)
-        
-        
-        //add bottomBar
-        createBottomBar()
-    }
-    
-  
-    private func createBottomBar() {
-        
-        self.setViewControllers([ItemsInTableViewController(), ItemsInCollectionViewController()], animated: true)
-        
-        //parse and get all items in the tab controller
-        guard let tabs = self.tabBar.items else {
-            return
-        }
-
-        let tabBarImageItem = ["tablecells","square.grid.2x2"]
-        let tabBarSelectedImageItem = ["tablecells.fill", "square.grid.2x2.fill"]
-
-        //set image and colo according to selection status of tab
-        for i in 0..<tabs.count {
-            tabs[i].image = UIImage(systemName: tabBarImageItem[i])
-            tabs[i].selectedImage = UIImage(systemName: tabBarSelectedImageItem[i])
-        }
     }
 }
 

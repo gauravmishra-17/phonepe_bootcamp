@@ -11,19 +11,20 @@ class ItemsInTableViewController: UIViewController {
     
     var tableView = UITableView()
     var itemList:[Item]? = []
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         Task
         {
             itemList = await getItems()
-
+            
         }
-
-        // Do any additional setup after loading the view.
-//        configureTableView()
         
+        // Do any additional setup after loading the view.
+        configureTableView()
+        NSLayoutConstraint.activate(self.view.constraints)
+
     }
     
     func configureTableView()
@@ -32,7 +33,22 @@ class ItemsInTableViewController: UIViewController {
         //set delegates
         setTableViewDelegates()
         tableView.rowHeight = 100
-        tableView.pin(to: view)
+        
+        
+        
+        tableView.translatesAutoresizingMaskIntoConstraints = false
+        
+        let const1 = NSLayoutConstraint(item: tableView , attribute: .leading, relatedBy: .equal, toItem: self.view, attribute: .leading, multiplier: 1, constant: 0)
+        let const2 = NSLayoutConstraint(item:tableView , attribute: .trailing, relatedBy: .equal, toItem: self.view, attribute: .trailing, multiplier: 1, constant: 0)
+        let const3 = NSLayoutConstraint(item: tableView , attribute: .top, relatedBy: .equal, toItem: self.view, attribute: .top, multiplier: 1, constant: 0)
+        let const4 = NSLayoutConstraint(item: tableView , attribute: .bottom, relatedBy: .equal, toItem: self.view, attribute: .bottom, multiplier: 1, constant: 0)
+        
+        self.view.addConstraint(const1)
+        self.view.addConstraint(const2)
+        self.view.addConstraint(const3)
+        self.view.addConstraint(const4)
+        
+        
         
     }
     
@@ -43,17 +59,17 @@ class ItemsInTableViewController: UIViewController {
         tableView.dataSource = self
     }
     
-
+    
     /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
+     // MARK: - Navigation
+     
+     // In a storyboard-based application, you will often want to do a little preparation before navigation
+     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+     // Get the new view controller using segue.destination.
+     // Pass the selected object to the new view controller.
+     }
+     */
+    
 }
 
 
