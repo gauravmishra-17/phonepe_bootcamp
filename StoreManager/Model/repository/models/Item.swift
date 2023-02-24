@@ -11,7 +11,8 @@ import Foundation
 struct Item : Decodable
 {
     //Properties to define and Item with name, price and extra data
-    let name: String
-    let price: String
-    let extra: String
+    let name: String?
+    let price: String?
+    let extra: String?
+    let image: String?
 }

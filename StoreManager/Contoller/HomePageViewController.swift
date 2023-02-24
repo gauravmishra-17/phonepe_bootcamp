@@ -20,7 +20,7 @@ class HomePageViewController: UITabBarController {
         //set color on the root view and the bottom tabs
         view.backgroundColor = .white
         tabBar.backgroundColor = .white
-        view.insetsLayoutMarginsFromSafeArea = false
+//        view.insetsLayoutMarginsFromSafeArea = false
         
         //add appBar
         createAppBar()
@@ -41,7 +41,6 @@ class HomePageViewController: UITabBarController {
         var itemsInCollectionViewController = ItemsInCollectionViewController()
         
         self.setViewControllers([itemsInTableViewController,itemsInCollectionViewController, ItemsInCollectionViewController(),ItemsInCollectionViewController(),ItemsInCollectionViewController() ], animated: true)
-        
         
         
         //parse and get all items in the tab controller
@@ -68,11 +67,14 @@ class HomePageViewController: UITabBarController {
         let const2 = NSLayoutConstraint(item: appbar , attribute: .trailing, relatedBy: .equal, toItem: self.view, attribute: .trailing, multiplier: 1, constant: 0)
         let const3 = NSLayoutConstraint(item: appbar , attribute: .top, relatedBy: .equal, toItem: self.view, attribute: .top, multiplier: 1, constant: 0)
         let const4 = NSLayoutConstraint(item: appbar , attribute: .height, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1, constant: 143)
+//        let const5 = NSLayoutConstraint(item: appbar , attribute: .bottom, relatedBy: .equal, toItem: self.view, attribute: .bottom, multiplier: 1, constant: 0)
         
         self.view.addConstraint(const1)
         self.view.addConstraint(const2)
         self.view.addConstraint(const3)
         self.view.addConstraint(const4)
+//        self.view.addConstraint(const5)
+
     }
 }
 
