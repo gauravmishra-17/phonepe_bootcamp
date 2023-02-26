@@ -18,24 +18,38 @@ class ItemsInTableViewController: UIViewController {
             }
         }
     }
+    var viewModel = ItemsInTableViewModel()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
+//        self.view = ItemsInTableView(viewModel:viewModel )
         //add views
-        view.addSubview(tableView)
+//        view.addSubview(tableView)
         
         
         // Additional setup after loading the view.
-        configureTableView()
+//        configureTableView()
         
         //get items to list on screen
-        getItems()
+//        getItems()
         
         //activate constraints
-        NSLayoutConstraint.activate(self.view.constraints)
+//        NSLayoutConstraint.activate(self.view.constraints)
+        var a  = ItemsInTableView(viewModel: viewModel)
+        self.view = a
+        viewModel.itemList.bind{
+            [weak self] _ in
+            DispatchQueue.main.async {
+                a.tableView.reloadData()
+            }
+        }
         
     }
+//    override func loadView() {
+//
+//
+//    }
     
     func configureTableView()
     {

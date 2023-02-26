@@ -29,6 +29,7 @@
 		8D45486F29A8D78D00A59570 /* ItemCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D45486E29A8D78D00A59570 /* ItemCollectionViewCell.swift */; };
 		8D45487229AB970400A59570 /* ItemsInTableViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D45487129AB970400A59570 /* ItemsInTableViewModel.swift */; };
 		8D45487529AB9B0400A59570 /* Box.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D45487429AB9B0400A59570 /* Box.swift */; };
+		8D45487729AB9DF800A59570 /* ItemsInTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D45487629AB9DF800A59570 /* ItemsInTableView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -75,6 +76,7 @@
 		8D45486E29A8D78D00A59570 /* ItemCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemCollectionViewCell.swift; sourceTree = "<group>"; };
 		8D45487129AB970400A59570 /* ItemsInTableViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemsInTableViewModel.swift; sourceTree = "<group>"; };
 		8D45487429AB9B0400A59570 /* Box.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Box.swift; sourceTree = "<group>"; };
+		8D45487629AB9DF800A59570 /* ItemsInTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemsInTableView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -168,6 +170,7 @@
 		8D454845299DCC0E00A59570 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				8D45487629AB9DF800A59570 /* ItemsInTableView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -385,6 +388,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				8D45486F29A8D78D00A59570 /* ItemCollectionViewCell.swift in Sources */,
+				8D45487729AB9DF800A59570 /* ItemsInTableView.swift in Sources */,
 				8D45486529A3506F00A59570 /* UIColorExt.swift in Sources */,
 				8D454859299E088700A59570 /* ResultDto.swift in Sources */,
 				8D45487229AB970400A59570 /* ItemsInTableViewModel.swift in Sources */,

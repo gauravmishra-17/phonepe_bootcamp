@@ -33,8 +33,8 @@ final class Box<T> {
   }
     
   //function to bind the new value
-  func bind(listener: Listener?) {
-    self.listener = listener
-    listener?(value)
-  }
+    func bind(_ listener:@escaping (T?) -> Void) {
+      self.listener = listener
+      listener(value)
+    }
 }

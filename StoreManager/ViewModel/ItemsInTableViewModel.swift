@@ -7,8 +7,24 @@
 
 import UIKit
 
-class ItemsInTableViewModel: UIView {
+class ItemsInTableViewModel {
+    
+    var itemList : Box<[Item]> = Box([])
+    
+    init()
+    {
+        getItems()
+    }
 
-
+    
+    func getItems()   -> Void
+    {
+        ItemsService().getItems{ items in
+            self.itemList.value = items
+        }
+        
+    }
+    
+    
 
 }
