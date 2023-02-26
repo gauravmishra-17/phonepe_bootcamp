@@ -22,21 +22,29 @@ class ItemsInTableViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        //add views
+        view.addSubview(tableView)
         
-        // Do any additional setup after loading the view.
-        getItems()
-        print(itemList)
+        
+        // Additional setup after loading the view.
         configureTableView()
+        
+        //get items to list on screen
+        getItems()
+        
+        //activate constraints
         NSLayoutConstraint.activate(self.view.constraints)
         
     }
     
     func configureTableView()
     {
-        view.addSubview(tableView)
         //set delegates
         setTableViewDelegates()
+        
+        //set properties and constraints on the table
         tableView.rowHeight = 71
+        tableView.showsVerticalScrollIndicator = false
         tableView.register(ItemTableViewCell.self, forCellReuseIdentifier: "ItemTableViewCell")
         
         
@@ -64,16 +72,13 @@ class ItemsInTableViewController: UIViewController {
         tableView.dataSource = self
     }
     
-    
-    /*
-     // MARK: - Navigation
-     
-     // In a storyboard-based application, you will often want to do a little preparation before navigation
-     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-     // Get the new view controller using segue.destination.
-     // Pass the selected object to the new view controller.
-     }
-     */
+    func getItems()   -> Void
+    {
+        ItemsService().getItems{ items in
+            self.itemList = items
+        }
+        
+    }
     
 }
 
@@ -97,13 +102,4 @@ extension ItemsInTableViewController: UITableViewDelegate, UITableViewDataSource
     
 }
 
-extension ItemsInTableViewController
-{
-    func getItems()   -> Void
-    {
-        ItemsService().getItems{ items in
-            self.itemList = items
-        }
-        
-    }
-}
+
