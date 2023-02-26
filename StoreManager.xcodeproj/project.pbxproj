@@ -26,6 +26,7 @@
 		8D45486529A3506F00A59570 /* UIColorExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D45486429A3506F00A59570 /* UIColorExt.swift */; };
 		8D45486729A3535C00A59570 /* ItemTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D45486629A3535C00A59570 /* ItemTableViewCell.swift */; };
 		8D45486929A5ECBB00A59570 /* AppBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D45486829A5ECBB00A59570 /* AppBarView.swift */; };
+		8D45486F29A8D78D00A59570 /* ItemCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D45486E29A8D78D00A59570 /* ItemCollectionViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -69,6 +70,7 @@
 		8D45486429A3506F00A59570 /* UIColorExt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColorExt.swift; sourceTree = "<group>"; };
 		8D45486629A3535C00A59570 /* ItemTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemTableViewCell.swift; sourceTree = "<group>"; };
 		8D45486829A5ECBB00A59570 /* AppBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppBarView.swift; sourceTree = "<group>"; };
+		8D45486E29A8D78D00A59570 /* ItemCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemCollectionViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -173,6 +175,7 @@
 				8D45486429A3506F00A59570 /* UIColorExt.swift */,
 				8D45486629A3535C00A59570 /* ItemTableViewCell.swift */,
 				8D45486829A5ECBB00A59570 /* AppBarView.swift */,
+				8D45486E29A8D78D00A59570 /* ItemCollectionViewCell.swift */,
 			);
 			path = Contoller;
 			sourceTree = "<group>";
@@ -359,6 +362,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8D45486F29A8D78D00A59570 /* ItemCollectionViewCell.swift in Sources */,
 				8D45486529A3506F00A59570 /* UIColorExt.swift in Sources */,
 				8D454859299E088700A59570 /* ResultDto.swift in Sources */,
 				8D454857299DDBB400A59570 /* ItemsService.swift in Sources */,
@@ -543,6 +547,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = StoreManager/Info.plist;
+				INFOPLIST_KEY_LSApplicationCategoryType = "";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
@@ -569,6 +574,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = StoreManager/Info.plist;
+				INFOPLIST_KEY_LSApplicationCategoryType = "";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";

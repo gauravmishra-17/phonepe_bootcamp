@@ -14,4 +14,5 @@ struct ItemDto : Decodable
     let name: String
     let price: String
     let extra: String
+    let image: String
 }
