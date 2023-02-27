@@ -42,7 +42,7 @@ class ItemTableViewCell: UITableViewCell {
         fatalError("init(coder:) has not been implemented")
     }
     
-    func  set(item : Item)
+    func  set(item : ItemsViewModel)
     {
 //        downloadImage(from: URL(fileURLWithPath: item.image!))
         itemImage.image = UIImage(named: "item-icon")

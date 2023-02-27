@@ -9,7 +9,7 @@ import UIKit
 
 class ItemsInTableViewModel {
     
-    var itemList : Box<[Item]> = Box([])
+    var itemList : Box<[ItemsViewModel]> = Box([])
     
     init()
     {
@@ -20,7 +20,7 @@ class ItemsInTableViewModel {
     func getItems()   -> Void
     {
         ItemsService().getItems{ items in
-            self.itemList.value = items
+            self.itemList.value = items.itemList.value
         }
         
     }

@@ -40,9 +40,9 @@ class ItemsInCollectionViewController: UIViewController
     func loadItems()
     {
         
-        ItemsService().getItems{ items in
-            self.itemList = items
-        }
+//        ItemsService().getItems{ items in
+//            self.itemList = items
+//        }
         
     }
     

@@ -11,13 +11,6 @@ class ItemsInTableView: UIView {
     
     var itemList:[Item] = []
     var count = 0
-//    {
-//        didSet{
-//            DispatchQueue.main.async {
-//                self.tableView.reloadData()
-//            }
-//        }
-//    }
     
     var viewModel : ItemsInTableViewModel
     var tableView = UITableView()
@@ -92,23 +85,11 @@ class ItemsInTableView: UIView {
 
 extension ItemsInTableView: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        
-//        viewModel.itemList.bind {
-//            locationName in
-//            self.count = locationName.count
-//            print(self.count)
-//        }
-        print(viewModel.itemList.value.count)
         return viewModel.itemList.value.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "ItemTableViewCell") as! ItemTableViewCell
-//
-//        viewModel.itemList.bind {
-//            locationName in
-//            self.itemList = locationName!
-//        }
 
         let item =  viewModel.itemList.value[indexPath.row]
         

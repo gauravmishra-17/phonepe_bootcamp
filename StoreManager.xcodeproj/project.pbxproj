@@ -30,6 +30,7 @@
 		8D45487229AB970400A59570 /* ItemsInTableViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D45487129AB970400A59570 /* ItemsInTableViewModel.swift */; };
 		8D45487529AB9B0400A59570 /* Box.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D45487429AB9B0400A59570 /* Box.swift */; };
 		8D45487729AB9DF800A59570 /* ItemsInTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D45487629AB9DF800A59570 /* ItemsInTableView.swift */; };
+		8D45487929AC6F3A00A59570 /* ItemViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D45487829AC6F3A00A59570 /* ItemViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -77,6 +78,7 @@
 		8D45487129AB970400A59570 /* ItemsInTableViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemsInTableViewModel.swift; sourceTree = "<group>"; };
 		8D45487429AB9B0400A59570 /* Box.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Box.swift; sourceTree = "<group>"; };
 		8D45487629AB9DF800A59570 /* ItemsInTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemsInTableView.swift; sourceTree = "<group>"; };
+		8D45487829AC6F3A00A59570 /* ItemViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -170,6 +172,7 @@
 		8D454845299DCC0E00A59570 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				8D45486629A3535C00A59570 /* ItemTableViewCell.swift */,
 				8D45487629AB9DF800A59570 /* ItemsInTableView.swift */,
 			);
 			path = View;
@@ -182,7 +185,6 @@
 				8D45485C29A3269B00A59570 /* ItemsInTableViewController.swift */,
 				8D45485E29A3273B00A59570 /* ItemsInCollectionViewController.swift */,
 				8D45486429A3506F00A59570 /* UIColorExt.swift */,
-				8D45486629A3535C00A59570 /* ItemTableViewCell.swift */,
 				8D45486829A5ECBB00A59570 /* AppBarView.swift */,
 				8D45486E29A8D78D00A59570 /* ItemCollectionViewCell.swift */,
 			);
@@ -245,6 +247,7 @@
 			isa = PBXGroup;
 			children = (
 				8D45487129AB970400A59570 /* ItemsInTableViewModel.swift */,
+				8D45487829AC6F3A00A59570 /* ItemViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -396,6 +399,7 @@
 				8D45484F299DD41800A59570 /* Item.swift in Sources */,
 				8D454855299DD6E700A59570 /* ItemListDto.swift in Sources */,
 				8D454851299DD50200A59570 /* ItemList.swift in Sources */,
+				8D45487929AC6F3A00A59570 /* ItemViewModel.swift in Sources */,
 				8D454819299CDF8800A59570 /* HomePageViewController.swift in Sources */,
 				8D454815299CDF8800A59570 /* AppDelegate.swift in Sources */,
 				8D45485F29A3273B00A59570 /* ItemsInCollectionViewController.swift in Sources */,
