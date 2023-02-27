@@ -7,6 +7,7 @@
 
 import Foundation
 
+//view model for items
 class ItemsViewModel {
     
     var name: String? = ""

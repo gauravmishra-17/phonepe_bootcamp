@@ -12,17 +12,16 @@ class ItemsInTableView: UIView {
     var itemList:[Item] = []
     var count = 0
     
-    var viewModel : ItemsInTableViewModel
+    var viewModel : ItemsListViewModel
     var tableView = UITableView()
     
-    init(viewModel: ItemsInTableViewModel) {
+    init(viewModel: ItemsListViewModel) {
         self.viewModel = viewModel
         
         super.init(frame: .zero)
         
         self.setup()
         self.style()
-        self.setupBindings()
         self.setupConstraints()
         
         //activate constraints
@@ -56,10 +55,6 @@ class ItemsInTableView: UIView {
         tableView.register(ItemTableViewCell.self, forCellReuseIdentifier: "ItemTableViewCell")
         
         
-        
-    }
-    func setupBindings()
-    {
         
     }
     

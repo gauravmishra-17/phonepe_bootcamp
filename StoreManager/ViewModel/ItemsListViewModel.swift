@@ -7,7 +7,8 @@
 
 import UIKit
 
-class ItemsInTableViewModel {
+//view model for list of item view models
+class ItemsListViewModel {
     
     var itemList : Box<[ItemsViewModel]> = Box([])
     

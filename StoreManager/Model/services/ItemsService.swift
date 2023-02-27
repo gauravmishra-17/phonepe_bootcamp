@@ -14,7 +14,7 @@ class ItemsService
     private let session = URLSession.shared
     
     
-    func getItems(completionHandler:@escaping (ItemsInTableViewModel) -> Void)
+    func getItems(completionHandler:@escaping (ItemsListViewModel) -> Void)
     {
         let url = URL(string: "https://run.mocky.io/v3/995ce2a0-1daf-4993-915f-8c198f3f752c")!
         let json = """
@@ -110,9 +110,9 @@ class ItemsService
 
 extension ItemsService
 {
-    func viewModelMapper (items : [Item]) -> ItemsInTableViewModel
+    func viewModelMapper (items : [Item]) -> ItemsListViewModel
     {
-        var viewModel = ItemsInTableViewModel()
+        var viewModel = ItemsListViewModel()
         
         viewModel.itemList.value = items.compactMap(
             {
