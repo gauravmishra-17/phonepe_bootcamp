@@ -7,7 +7,7 @@
 
 import UIKit
 
-class AppBarView: UIView {
+class SearchBarView: UIView {
     
     var titleUI :UIView = UIView()
     var filterUI :UIView = UIView()

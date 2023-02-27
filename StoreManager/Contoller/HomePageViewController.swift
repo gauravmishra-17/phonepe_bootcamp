@@ -12,7 +12,7 @@ import Combine
 class HomePageViewController: UITabBarController {
     
     
-    var appbar = UIView()
+    var searchBar = UIView()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -20,13 +20,12 @@ class HomePageViewController: UITabBarController {
         //set color on the root view and the bottom tabs
         view.backgroundColor = .white
         tabBar.backgroundColor = .white
-//        view.insetsLayoutMarginsFromSafeArea = false
         
-        //add appBar
-        createAppBar()
+        //add searchBar
+        createSearchBar()
         
-        //add bottomBar
-        createBottomBar()
+        //add navigationTabBar
+        createNavigationTabBar()
         
         //activate constraints
         NSLayoutConstraint.activate(self.view.constraints)
@@ -34,7 +33,15 @@ class HomePageViewController: UITabBarController {
     }
     
     
-    private func createBottomBar() {
+    
+    
+    private func createSearchBar() {
+        searchBar = SearchBarView()
+        view.addSubview(searchBar)
+        searchBarConstraints()
+        
+    }
+    private func createNavigationTabBar() {
         
         //setup viewControllers to point at the tabs
         var itemsInTableViewController = ItemsInTableViewController()
@@ -58,22 +65,20 @@ class HomePageViewController: UITabBarController {
         }
     }
     
-    private func createAppBar() {
-        appbar = AppBarView()
-        view.addSubview(appbar)
-        appbar.translatesAutoresizingMaskIntoConstraints = false
+    
+    func searchBarConstraints()
+    {
+        searchBar.translatesAutoresizingMaskIntoConstraints = false
         
-        let const1 = NSLayoutConstraint(item: appbar , attribute: .leading, relatedBy: .equal, toItem: self.view, attribute: .leading, multiplier: 1, constant: 0)
-        let const2 = NSLayoutConstraint(item: appbar , attribute: .trailing, relatedBy: .equal, toItem: self.view, attribute: .trailing, multiplier: 1, constant: 0)
-        let const3 = NSLayoutConstraint(item: appbar , attribute: .top, relatedBy: .equal, toItem: self.view, attribute: .top, multiplier: 1, constant: 0)
-        let const4 = NSLayoutConstraint(item: appbar , attribute: .height, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1, constant: 143)
-//        let const5 = NSLayoutConstraint(item: appbar , attribute: .bottom, relatedBy: .equal, toItem: self.view, attribute: .bottom, multiplier: 1, constant: 0)
+        let const1 = NSLayoutConstraint(item: searchBar , attribute: .leading, relatedBy: .equal, toItem: self.view, attribute: .leading, multiplier: 1, constant: 0)
+        let const2 = NSLayoutConstraint(item: searchBar , attribute: .trailing, relatedBy: .equal, toItem: self.view, attribute: .trailing, multiplier: 1, constant: 0)
+        let const3 = NSLayoutConstraint(item: searchBar , attribute: .top, relatedBy: .equal, toItem: self.view, attribute: .top, multiplier: 1, constant: 0)
+        let const4 = NSLayoutConstraint(item: searchBar , attribute: .height, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1, constant: 143)
         
         self.view.addConstraint(const1)
         self.view.addConstraint(const2)
         self.view.addConstraint(const3)
         self.view.addConstraint(const4)
-//        self.view.addConstraint(const5)
 
     }
 }
