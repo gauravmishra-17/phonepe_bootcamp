@@ -14,7 +14,7 @@ class ItemsService
     private let session = URLSession.shared
     
     
-    func getItems(completionHandler:@escaping ([Item]) -> Void)
+    func getItems(completionHandler:@escaping (ItemsListViewModel) -> Void)
     {
         let url = URL(string: "https://run.mocky.io/v3/995ce2a0-1daf-4993-915f-8c198f3f752c")!
         let json = """
@@ -90,8 +90,9 @@ class ItemsService
                 //                    completionHandler(result.data.items)
                 //
                 //                }
-//                print(result.data.items)
-                completionHandler(result.data.items)
+                
+                
+                completionHandler(self.viewModelMapper(items: result.data.items))
                 
             }
             catch
@@ -105,4 +106,18 @@ class ItemsService
     }
     
     
+}
+
+extension ItemsService
+{
+    func viewModelMapper (items : [Item]) -> ItemsListViewModel
+    {
+        var viewModel = ItemsListViewModel()
+        
+        viewModel.itemList.value = items.compactMap(
+            {
+                ItemsViewModel(name: $0.name, price: $0.price, extra: $0.extra, image: $0.image)
+            })
+        return viewModel
+    }
 }
