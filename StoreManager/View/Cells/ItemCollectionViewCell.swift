@@ -9,19 +9,19 @@ import UIKit
 
 class ItemCollectionViewCell: UICollectionViewCell {
     
-    var itemImage = UIImageView()
-    var itemName = UILabel()
-    var itemPrice = UILabel()
-    var itemExtra = UILabel()
+    var itemImageLabel = UIImageView()
+    var itemNameLabel = UILabel()
+    var itemPriceLabel = UILabel()
+    var itemExtraLabel = UILabel()
     
     override init(frame: CGRect) {
         super.init(frame: frame)
         
         
         //add the different components that makes a cell
-        addSubview(itemImage)
-        addSubview(itemName)
-        addSubview(itemPrice)
+        addSubview(itemImageLabel)
+        addSubview(itemNameLabel)
+        addSubview(itemPriceLabel)
         
         //setup the ui components
         configureItemImage()
@@ -34,24 +34,24 @@ class ItemCollectionViewCell: UICollectionViewCell {
         fatalError("init(coder:) has not been implemented")
     }
     
-    func  set(item : Item)
+    func  set(item : ItemsViewModel)
     {
         //        downloadImage(from: URL(fileURLWithPath: item.image!))
-        itemImage.image = UIImage(named: "item-icon")
-        itemName.text = item.name
-        itemPrice.text = item.price
-        itemExtra.text = item.extra ?? ""
+        itemImageLabel.image = UIImage(named: "item-icon")
+        itemNameLabel.text = item.name
+        itemPriceLabel.text = item.price
+        itemExtraLabel.text = item.extra ?? ""
     }
     
     
     func configureItemImage(){
         
-        itemImage.translatesAutoresizingMaskIntoConstraints = false
+        itemImageLabel.translatesAutoresizingMaskIntoConstraints = false
         
-        let const1 = NSLayoutConstraint(item: itemImage , attribute: .leading, relatedBy: .equal, toItem: self, attribute: .leading, multiplier: 1, constant: 0)
-        let const2 = NSLayoutConstraint(item: itemImage , attribute: .top, relatedBy: .equal, toItem: self, attribute: .top, multiplier: 1, constant: 0)
-        let const3 = NSLayoutConstraint(item: itemImage , attribute: .height, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1, constant: 100)
-        let const4 = NSLayoutConstraint(item: itemImage , attribute: .width, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1, constant: 100)
+        let const1 = NSLayoutConstraint(item: itemImageLabel , attribute: .leading, relatedBy: .equal, toItem: self, attribute: .leading, multiplier: 1, constant: 0)
+        let const2 = NSLayoutConstraint(item: itemImageLabel , attribute: .top, relatedBy: .equal, toItem: self, attribute: .top, multiplier: 1, constant: 0)
+        let const3 = NSLayoutConstraint(item: itemImageLabel , attribute: .height, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1, constant: 100)
+        let const4 = NSLayoutConstraint(item: itemImageLabel , attribute: .width, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1, constant: 100)
         
         
         self.addConstraint(const1)
@@ -61,13 +61,13 @@ class ItemCollectionViewCell: UICollectionViewCell {
         
     }
     func configureItemName(){
-        itemName.numberOfLines = 1
-        itemName.font = .systemFont(ofSize: 14)
+        itemNameLabel.numberOfLines = 1
+        itemNameLabel.font = .systemFont(ofSize: 14)
         
-        itemName.translatesAutoresizingMaskIntoConstraints = false
+        itemNameLabel.translatesAutoresizingMaskIntoConstraints = false
         
-        let const1 = NSLayoutConstraint(item: itemName , attribute: .leading, relatedBy: .equal, toItem: itemImage, attribute: .leading, multiplier: 1, constant: 0)
-        let const3 = NSLayoutConstraint(item: itemName , attribute: .top, relatedBy: .equal, toItem: itemImage, attribute: .bottom, multiplier: 1, constant: 8)
+        let const1 = NSLayoutConstraint(item: itemNameLabel , attribute: .leading, relatedBy: .equal, toItem: itemImageLabel, attribute: .leading, multiplier: 1, constant: 0)
+        let const3 = NSLayoutConstraint(item: itemNameLabel , attribute: .top, relatedBy: .equal, toItem: itemImageLabel, attribute: .bottom, multiplier: 1, constant: 8)
         
         
         
@@ -79,13 +79,13 @@ class ItemCollectionViewCell: UICollectionViewCell {
     
     func   configureItemPrice()
     {
-        itemPrice.numberOfLines = 1
-        itemPrice.font = .systemFont(ofSize: 14,weight: .semibold)
+        itemPriceLabel.numberOfLines = 1
+        itemPriceLabel.font = .systemFont(ofSize: 14,weight: .semibold)
         
-        itemPrice.translatesAutoresizingMaskIntoConstraints = false
+        itemPriceLabel.translatesAutoresizingMaskIntoConstraints = false
         
-        let const1 = NSLayoutConstraint(item: itemPrice , attribute: .leading, relatedBy: .equal, toItem: itemImage, attribute: .leading, multiplier: 1, constant: 0)
-        let const3 = NSLayoutConstraint(item: itemPrice , attribute: .top, relatedBy: .equal, toItem: itemName, attribute: .bottom, multiplier: 1, constant: 5)
+        let const1 = NSLayoutConstraint(item: itemPriceLabel , attribute: .leading, relatedBy: .equal, toItem: itemImageLabel, attribute: .leading, multiplier: 1, constant: 0)
+        let const3 = NSLayoutConstraint(item: itemPriceLabel , attribute: .top, relatedBy: .equal, toItem: itemNameLabel, attribute: .bottom, multiplier: 1, constant: 5)
         
         
         self.addConstraint(const1)
