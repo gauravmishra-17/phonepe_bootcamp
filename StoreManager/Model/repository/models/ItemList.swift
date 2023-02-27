@@ -7,7 +7,11 @@
 
 import Foundation
 
-struct ItemList: Decodable
+class ItemList
 {
-    let items: [Item]
+    var items: [Item] = []
+    init(items : [Item])
+    {
+        self.items = items
+    }
 }

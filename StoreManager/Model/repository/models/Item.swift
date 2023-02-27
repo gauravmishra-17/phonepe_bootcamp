@@ -8,11 +8,19 @@
 import Foundation
 
 //Model to store an Item's detalis
-struct Item : Decodable
+class Item
 {
     //Properties to define and Item with name, price and extra data
-    let name: String?
-    let price: String?
-    let extra: String?
-    let image: String?
+    var name: String? = ""
+    var price: String? = ""
+    var extra: String? = ""
+    var image: String? = ""
+    
+    init(name: String?, price: String?, extra: String?, image: String?)
+    {
+        self.name = name
+        self.price = price
+        self.extra = extra
+        self.image = image
+    }
 }

@@ -77,22 +77,23 @@ class ItemsService
             
             do{
                 ///mock data
-                let result = try  JSONDecoder().decode(ResultDto.self,from: jsonData )
+//                let result = try  JSONDecoder().decode(ResultDto.self,from: jsonData )
+//                var dataModel = self.dataModelMapper(items: result.data.items)
+//                completionHandler(self.viewModelMapper(items: dataModel.items))
                 
                 ///real data
-                //                if(error != nil)
-                //                {print("An error occurred while fecthing data from API")}
-                //                else
-                //                {
-                //
-                //                    let result = try  JSONDecoder().decode(ResultDto.self,from:data!)
-                //                    print(result.data.items)
-                //                    completionHandler(result.data.items)
-                //
-                //                }
+                                if(error != nil)
+                                {print("An error occurred while fecthing data from API")}
+                                else
+                                {
+                
+                                    let result = try  JSONDecoder().decode(ResultDto.self,from:data!)
+                                    var dataModel = self.dataModelMapper(items: result.data.items)
+                                    completionHandler(self.viewModelMapper(items: dataModel.items))
+                
+                                }
                 
                 
-                completionHandler(self.viewModelMapper(items: result.data.items))
                 
             }
             catch
@@ -118,6 +119,19 @@ extension ItemsService
             {
                 ItemsViewModel(name: $0.name, price: $0.price, extra: $0.extra, image: $0.image)
             })
+        
         return viewModel
+    }
+    
+    func dataModelMapper (items : [ItemDto]) -> ItemList
+    {
+        var dataModel = ItemList(items:[])
+        
+        dataModel.items = items.compactMap(
+            {
+                Item(name: $0.name, price: $0.price, extra: $0.extra, image: $0.image)
+            })
+        
+        return dataModel
     }
 }
