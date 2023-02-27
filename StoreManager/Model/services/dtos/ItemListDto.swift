@@ -10,5 +10,5 @@ import Foundation
 class ItemListDto : Decodable
 {
     
-    let items: [Item]
+    let items: [ItemDto]
 }

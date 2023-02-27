@@ -78,21 +78,4 @@ class ItemsInTableView: UIView {
 }
 
 
-extension ItemsInTableView: UITableViewDelegate, UITableViewDataSource {
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return viewModel.itemList.value.count
-    }
-    
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "ItemTableViewCell") as! ItemTableViewCell
 
-        let item =  viewModel.itemList.value[indexPath.row]
-        
-        cell.set(item: item)
-        
-        return cell
-    }
-    
-    
-    
-}
