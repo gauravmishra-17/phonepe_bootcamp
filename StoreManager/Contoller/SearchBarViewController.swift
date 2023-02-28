@@ -1,29 +1,26 @@
 //
-//  AppBarView.swift
+//  SearchBarViewController.swift
 //  StoreManager
 //
-//  Created by gaurav.mishra on 22/02/23.
+//  Created by gaurav.mishra on 28/02/23.
 //
 
 import UIKit
 
-class SearchBarView: UIView {
+class SearchBarViewController: UIViewController, UISearchBarDelegate {
     
+
     var titleUI :UIView = UIView()
     var filterUI :UIView = UIView()
+    var viewModel = ItemsListViewModel()
     
-    override init(frame: CGRect) {
-        super.init(frame: frame)
-        
+    override func viewDidLoad() {
+        super.viewDidLoad()
+
+        // Do any additional setup after loading the view.
         //create app bar view
         createAppBarView()
     }
-    
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
-    
-    
     
     
     func createAppBarView(){
@@ -41,35 +38,32 @@ class SearchBarView: UIView {
         createSearchBar()
         
         //activate constraints
-        NSLayoutConstraint.activate(self.constraints)
+        NSLayoutConstraint.activate(self.view.constraints)
         
     }
-    
-    
-    
     
     func createBackground()
     {
         let backgroundView = UIView()
         backgroundView.backgroundColor = UIColor(hexString: "#E6E9F6")
-        self.addSubview(backgroundView)
+        self.view.addSubview(backgroundView)
         
         backgroundView.translatesAutoresizingMaskIntoConstraints = false
         
-        let constraint1 = NSLayoutConstraint(item: backgroundView, attribute: .leading, relatedBy: .equal, toItem: self, attribute: .leading, multiplier: 1, constant: 0)
+        let constraint1 = NSLayoutConstraint(item: backgroundView, attribute: .leading, relatedBy: .equal, toItem: self.view, attribute: .leading, multiplier: 1, constant: 0)
         
-        let constraint2 = NSLayoutConstraint(item: backgroundView, attribute: .trailing, relatedBy: .equal, toItem: self, attribute: .trailing, multiplier: 1, constant: 0)
+        let constraint2 = NSLayoutConstraint(item: backgroundView, attribute: .trailing, relatedBy: .equal, toItem: self.view, attribute: .trailing, multiplier: 1, constant: 0)
         
         
         let constraint3 = NSLayoutConstraint(item: backgroundView, attribute: .height, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1, constant: 143)
         
-        let constraint4 = NSLayoutConstraint(item: backgroundView, attribute: .top, relatedBy: .equal, toItem: self, attribute: .top, multiplier: 1, constant: 0)
+        let constraint4 = NSLayoutConstraint(item: backgroundView, attribute: .top, relatedBy: .equal, toItem: self.view, attribute: .top, multiplier: 1, constant: 0)
         
         
-        self.addConstraint(constraint1)
-        self.addConstraint(constraint2)
-        self.addConstraint(constraint3)
-        self.addConstraint(constraint4)
+        self.view.addConstraint(constraint1)
+        self.view.addConstraint(constraint2)
+        self.view.addConstraint(constraint3)
+        self.view.addConstraint(constraint4)
         
     }
     
@@ -78,16 +72,16 @@ class SearchBarView: UIView {
         let titleView = UILabel()
         titleView.text = "Explore"
         titleView.font = .systemFont(ofSize: 18,weight: .bold)
-        self.addSubview(titleView)
+        self.view.addSubview(titleView)
         
         titleView.translatesAutoresizingMaskIntoConstraints = false
         
-        let constraint1 = NSLayoutConstraint(item: titleView, attribute: .leading, relatedBy: .equal, toItem: self, attribute: .leading, multiplier: 1, constant: 49)
+        let constraint1 = NSLayoutConstraint(item: titleView, attribute: .leading, relatedBy: .equal, toItem: self.view, attribute: .leading, multiplier: 1, constant: 49)
         
-        let constraint2 = NSLayoutConstraint(item: titleView, attribute: .top, relatedBy: .equal, toItem: self, attribute: .top, multiplier: 1, constant: 35)
+        let constraint2 = NSLayoutConstraint(item: titleView, attribute: .top, relatedBy: .equal, toItem: self.view, attribute: .top, multiplier: 1, constant: 35)
         
-        self.addConstraint(constraint1)
-        self.addConstraint(constraint2)
+        self.view.addConstraint(constraint1)
+        self.view.addConstraint(constraint2)
         
         titleUI = titleView
     }
@@ -98,16 +92,16 @@ class SearchBarView: UIView {
         filterView.text = "Filter"
         filterView.font = .systemFont(ofSize: 16)
         filterView.textColor = UIColor(hexString: "#5DB075")
-        self.addSubview(filterView)
+        self.view.addSubview(filterView)
         
         filterView.translatesAutoresizingMaskIntoConstraints = false
         
         let constraint1 = NSLayoutConstraint(item: filterView, attribute: .leading, relatedBy: .equal, toItem: self.titleUI, attribute: .trailing, multiplier: 1, constant: 223)
         
-        let constraint2 = NSLayoutConstraint(item: filterView, attribute: .top, relatedBy: .equal, toItem: self, attribute: .top, multiplier: 1, constant: 37)
+        let constraint2 = NSLayoutConstraint(item: filterView, attribute: .top, relatedBy: .equal, toItem: self.view, attribute: .top, multiplier: 1, constant: 37)
         
-        self.addConstraint(constraint1)
-        self.addConstraint(constraint2)
+        self.view.addConstraint(constraint1)
+        self.view.addConstraint(constraint2)
     }
     
     func  createSearchBar()
@@ -119,26 +113,27 @@ class SearchBarView: UIView {
         searchBarView.layer.cornerRadius = 20
         searchBarView.placeholder = "Search"
         searchBarView.clipsToBounds = true
-        self.addSubview(searchBarView)
+        self.view.addSubview(searchBarView)
         
         searchBarView.translatesAutoresizingMaskIntoConstraints = false
         
-        let constraint1 = NSLayoutConstraint(item: searchBarView, attribute: .leading, relatedBy: .equal, toItem: self, attribute: .leading, multiplier: 1, constant: 34)
+        let constraint1 = NSLayoutConstraint(item: searchBarView, attribute: .leading, relatedBy: .equal, toItem: self.view, attribute: .leading, multiplier: 1, constant: 34)
         
-        let constraint2 = NSLayoutConstraint(item: searchBarView, attribute: .top, relatedBy: .equal, toItem: self, attribute: .top, multiplier: 1, constant: 72)
+        let constraint2 = NSLayoutConstraint(item: searchBarView, attribute: .top, relatedBy: .equal, toItem: self.view, attribute: .top, multiplier: 1, constant: 72)
         
         let constraint3 = NSLayoutConstraint(item: searchBarView, attribute: .height, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1, constant: 50)
         let constraint4 = NSLayoutConstraint(item: searchBarView, attribute: .width, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1, constant: 343)
         
-        self.addConstraint(constraint1)
-        self.addConstraint(constraint2)
-        self.addConstraint(constraint3)
-        self.addConstraint(constraint4)
+        self.view.addConstraint(constraint1)
+        self.view.addConstraint(constraint2)
+        self.view.addConstraint(constraint3)
+        self.view.addConstraint(constraint4)
     }
     
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        print(searchText)
+        viewModel.updateItemList(text: searchText)
+    }
     
+
 }
-
-
-
-

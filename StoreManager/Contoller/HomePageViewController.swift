@@ -9,10 +9,11 @@ import UIKit
 import Combine
 
 //create root view controller as a Container View Controller - of type - UITabBarController
-class HomePageViewController: UITabBarController {
+class HomePageViewController: UITabBarController, UISearchBarDelegate {
     
-    
-    var searchBar = UIView()
+    var searchBar = SearchBarView()
+    var viewModel = ItemsListViewModel()
+
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -27,6 +28,8 @@ class HomePageViewController: UITabBarController {
         //add navigationTabBar
         createNavigationTabBar()
         
+        searchBar.searchBarView.delegate = self
+        
         //activate constraints
         NSLayoutConstraint.activate(self.view.constraints)
         
@@ -36,10 +39,14 @@ class HomePageViewController: UITabBarController {
     
     
     private func createSearchBar() {
-        searchBar = SearchBarView()
         view.addSubview(searchBar)
         searchBarConstraints()
         
+    }
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+//        var viewModel = ItemsListViewModel()
+
+        viewModel.updateItemList(text: searchText)
     }
     private func createNavigationTabBar() {
         
@@ -47,7 +54,7 @@ class HomePageViewController: UITabBarController {
         var itemsInTableViewController = ItemsInTableViewController()
         var itemsInCollectionViewController = ItemsInCollectionViewController()
         
-        self.setViewControllers([itemsInTableViewController,itemsInCollectionViewController, ItemsInCollectionViewController(),ItemsInCollectionViewController(),ItemsInCollectionViewController() ], animated: true)
+        self.setViewControllers([itemsInTableViewController,itemsInCollectionViewController,  ItemsInCollectionViewController(),ItemsInCollectionViewController(),ItemsInCollectionViewController() ], animated: true)
         
         
         //parse and get all items in the tab controller
@@ -69,12 +76,12 @@ class HomePageViewController: UITabBarController {
     func searchBarConstraints()
     {
         searchBar.translatesAutoresizingMaskIntoConstraints = false
-        
+
         let const1 = NSLayoutConstraint(item: searchBar , attribute: .leading, relatedBy: .equal, toItem: self.view, attribute: .leading, multiplier: 1, constant: 0)
         let const2 = NSLayoutConstraint(item: searchBar , attribute: .trailing, relatedBy: .equal, toItem: self.view, attribute: .trailing, multiplier: 1, constant: 0)
         let const3 = NSLayoutConstraint(item: searchBar , attribute: .top, relatedBy: .equal, toItem: self.view, attribute: .top, multiplier: 1, constant: 0)
         let const4 = NSLayoutConstraint(item: searchBar , attribute: .height, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1, constant: 143)
-        
+
         self.view.addConstraint(const1)
         self.view.addConstraint(const2)
         self.view.addConstraint(const3)
