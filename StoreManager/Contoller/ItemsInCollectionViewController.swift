@@ -19,15 +19,6 @@ class ItemsInCollectionViewController: UIViewController
         //create view and load
         let view  = ItemsInCollectionView(viewModel: viewModel)
         self.view = view
-        
-        //bind item list and reload whenever data change occurs
-        viewModel.itemList.bind{
-            [weak self] _ in
-            DispatchQueue.main.async {
-                view.collectionView.reloadData()
-            }
-        }
-        
        
     }
  

@@ -9,6 +9,8 @@ import UIKit
 
 class ItemsInTableViewController: UIViewController {
     
+    
+    
     //view model to hold view data
     var viewModel = ItemsListViewModel()
     
@@ -20,12 +22,12 @@ class ItemsInTableViewController: UIViewController {
         self.view = view
         
         //bind item list and reload whenever data change occurs
-        viewModel.itemList.bind{
-            [weak self] _ in
-            DispatchQueue.main.async {
-                view.tableView.reloadData()
-            }
-        }
+//        viewModel.itemList.bind{
+//            [weak self] _ in
+//            DispatchQueue.main.async {
+//                view.tableView.reloadData()
+//            }
+//        }
         
     }
     
