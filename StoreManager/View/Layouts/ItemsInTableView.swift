@@ -9,14 +9,14 @@ import UIKit
 
 class ItemsInTableView: UIView {
     
-    var itemList:[Item] = []
-    var count = 0
     
-    var viewModel : ItemsListViewModel
+    
+    var itemList:[ItemsViewModel] = []
+    
     var tableView = UITableView()
     
-    init(viewModel: ItemsListViewModel) {
-        self.viewModel = viewModel
+    init(itemList: [ItemsViewModel]) {
+        self.itemList = itemList
         
         super.init(frame: .zero)
         
@@ -79,13 +79,13 @@ class ItemsInTableView: UIView {
 
 extension ItemsInTableView: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return viewModel.itemList.value.count
+        return itemList.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "ItemTableViewCell") as! ItemTableViewCell
-
-        let item =  viewModel.itemList.value[indexPath.row]
+        
+        let item =  itemList[indexPath.row]
         
         cell.set(item: item)
         

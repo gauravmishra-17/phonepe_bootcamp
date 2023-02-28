@@ -11,18 +11,16 @@ class ItemsInCollectionView: UIView {
 
     var collectionView: UICollectionView = UICollectionView(frame: CGRect(x: 0, y: 0, width: 500, height: 1000), collectionViewLayout: UICollectionViewFlowLayout())
     var itemList:[ItemsViewModel] = []
-    var viewModel : ItemsListViewModel
 
     
-     init(viewModel: ItemsListViewModel) {
-         self.viewModel = viewModel
+     init(itemList: [ItemsViewModel]) {
+         self.itemList = itemList
          
         super.init(frame: .zero)
 
         // Loading the collection view.
         configureCollectionViewTable()
         collectionView.showsVerticalScrollIndicator = false
-        
         
         //activate constraints
         NSLayoutConstraint.activate(self.constraints)
@@ -31,6 +29,7 @@ class ItemsInCollectionView: UIView {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+
         
     func  configureCollectionViewTable()
     {
@@ -81,14 +80,14 @@ class ItemsInCollectionView: UIView {
 extension ItemsInCollectionView: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout
 {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return viewModel.itemList.value.count
+        return itemList.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ItemCollectionViewCell", for: indexPath) as! ItemCollectionViewCell
         
-        let item =  viewModel.itemList.value[indexPath.row]
+        let item = itemList[indexPath.row]
         
         cell.set(item: item)
         

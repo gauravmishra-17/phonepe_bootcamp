@@ -7,17 +7,23 @@
 
 import UIKit
 
+protocol SearchBarDelegate {
+    func updatedViewModel(viewModel: ItemsListViewModel)
+}
+
 class SearchBarView: UIView, UISearchBarDelegate {
     
     var titleUI :UIView = UIView()
     var filterUI :UIView = UIView()
     let searchBarView = UISearchBar()
-
+    var viewModel = ItemsListViewModel(itemList: [])
+    var delegate: SearchBarDelegate?
     
     override init(frame: CGRect) {
         super.init(frame: frame)
         
         //create app bar view
+        searchBarView.delegate = self
         createAppBarView()
     }
     
@@ -137,6 +143,12 @@ class SearchBarView: UIView, UISearchBarDelegate {
         self.addConstraint(constraint4)
     }
     
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        let newViewModel = viewModel.updateItemList(text: searchText)
+        delegate?.updatedViewModel(viewModel: newViewModel )
+
+    }
+
     
 }
 

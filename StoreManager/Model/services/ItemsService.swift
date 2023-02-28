@@ -113,9 +113,9 @@ extension ItemsService
 {
     func viewModelMapper (items : [Item]) -> ItemsListViewModel
     {
-        var viewModel = ItemsListViewModel()
+        var viewModel = ItemsListViewModel(itemList: [])
         
-        viewModel.itemList.value = items.compactMap(
+        viewModel.itemList = items.compactMap(
             {
                 ItemsViewModel(name: $0.name, price: $0.price, extra: $0.extra, image: $0.image)
             })

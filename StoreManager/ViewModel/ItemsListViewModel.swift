@@ -7,53 +7,60 @@
 
 import UIKit
 
+//protocols that view model will follow
+protocol ViewModelDelegate: AnyObject {
+    func updatedItemList(itemList : [ItemsViewModel])
+    
+}
+
+
 //view model for list of item view models
-class ItemsListViewModel {
+class ItemsListViewModel  {
     
-    var itemList : Box<[ItemsViewModel]> = Box([])
+    var itemList : [ItemsViewModel] = []
+    var delegate: ViewModelDelegate?
     
-    init()
+    init(itemList : [ItemsViewModel] )
     {
-        getItems()
+        self.itemList = itemList
     }
-    
     
     func getItems()   -> Void
     {
-        print("get Items")
-        ItemsService().getItems{ items in
-            self.itemList.value = items.itemList.value
+        ItemsService().getItems{ [self] items in
+            self.itemList = items.itemList
+            delegate?.updatedItemList(itemList: self.itemList)
         }
         
+        
+        
+        
     }
-    func updateItemList(text : String)
+    func updateItemList(text : String) -> ItemsListViewModel
     {
-        let filteredItems: Box<[ItemsViewModel]> = Box([])
-        print(itemList)
-        print(itemList.value.count)
-        print(text)
-        itemList.value.forEach({storeItem in
+        getItems()
+        var filteredItems: [ItemsViewModel] = []
+        self.itemList.forEach({storeItem in
             
-            print(storeItem.name)
             if storeItem.name?.contains(text) ?? false
             {
-                print(storeItem.name)
-                print(text)
-                filteredItems.value.append(storeItem)
+                filteredItems.append(storeItem)
             }
             else if storeItem.extra?.contains(text) ?? false
             {
-                print(storeItem.extra)
-                print(text)
-                filteredItems.value.append(storeItem)
+                filteredItems.append(storeItem)
             }
             else if storeItem.price?.contains(text) ?? false
-            {print(storeItem.price)
-                print(text)
-                filteredItems.value.append(storeItem)
+            {
+                filteredItems.append(storeItem)
             }
         })
-        self.itemList.value = filteredItems.value
+        
+        if text == ""
+        {filteredItems = self.itemList}
+        
+        return ItemsListViewModel(itemList: filteredItems)
+        
     }
     
 }
