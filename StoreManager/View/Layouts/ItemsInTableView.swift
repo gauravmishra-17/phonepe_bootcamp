@@ -7,26 +7,22 @@
 
 import UIKit
 
-class ItemsInTableView: UIView, ViewModelDelegate {
+class ItemsInTableView: UIView {
     
     
     
     var itemList:[ItemsViewModel] = []
-    var count = 0
     
-    var viewModel =  ItemsListViewModel()
     var tableView = UITableView()
     
-    init(viewModel: ItemsListViewModel) {
-        self.viewModel = viewModel
+    init(itemList: [ItemsViewModel]) {
+        self.itemList = itemList
         
         super.init(frame: .zero)
         
         self.setup()
         self.style()
         self.setupConstraints()
-        viewModel.getItems()
-        viewModel.delegate = self
         
         //activate constraints
         NSLayoutConstraint.activate(self.constraints)
@@ -36,13 +32,6 @@ class ItemsInTableView: UIView, ViewModelDelegate {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    func updatedItemList(itemList: [ItemsViewModel]) {
-        self.itemList = itemList
-        DispatchQueue.main.async { [self] in
-            tableView.reloadData()
-        }
-    }
-    
     
     func setup()
     {

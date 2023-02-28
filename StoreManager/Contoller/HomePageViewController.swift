@@ -9,10 +9,16 @@ import UIKit
 import Combine
 
 //create root view controller as a Container View Controller - of type - UITabBarController
-class HomePageViewController: UITabBarController {
+class HomePageViewController: UITabBarController, SearchBarDelegate, ViewModelDelegate {
     
     
-    var searchBar = UIView()
+    
+    var itemsInTableViewController = ItemsInTableViewController()
+    var itemsInCollectionViewController = ItemsInCollectionViewController()
+    
+    var searchBar = SearchBarView()
+    var viewModel = ItemsListViewModel(itemList: [])
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -27,27 +33,40 @@ class HomePageViewController: UITabBarController {
         //add navigationTabBar
         createNavigationTabBar()
         
+        searchBar.delegate = self
+        viewModel.delegate = self
+        viewModel.getItems()
+        
+        
+        
         //activate constraints
         NSLayoutConstraint.activate(self.view.constraints)
         
     }
-    
+    func updatedViewModel(viewModel: ItemsListViewModel) {
+        itemsInTableViewController.updateViewModel(viewModel:viewModel)
+        itemsInCollectionViewController.updateViewModel(viewModel:viewModel)
+    }
+    func updatedItemList(itemList: [ItemsViewModel]) {
+        itemsInTableViewController.updatedItemList(itemList: itemList)
+        itemsInCollectionViewController.updatedItemList(itemList: itemList)
+    }
     
     
     
     private func createSearchBar() {
-        searchBar = SearchBarView()
         view.addSubview(searchBar)
         searchBarConstraints()
         
     }
+    
     private func createNavigationTabBar() {
         
         //setup viewControllers to point at the tabs
-        var itemsInTableViewController = ItemsInTableViewController()
-        var itemsInCollectionViewController = ItemsInCollectionViewController()
         
-        self.setViewControllers([itemsInTableViewController,itemsInCollectionViewController, ItemsInCollectionViewController(),ItemsInCollectionViewController(),ItemsInCollectionViewController() ], animated: true)
+        
+        self.setViewControllers([itemsInTableViewController,itemsInCollectionViewController,
+                                 ItemsInCollectionViewController(),ItemsInCollectionViewController(),ItemsInCollectionViewController() ], animated: true)
         
         
         //parse and get all items in the tab controller
@@ -79,7 +98,7 @@ class HomePageViewController: UITabBarController {
         self.view.addConstraint(const2)
         self.view.addConstraint(const3)
         self.view.addConstraint(const4)
-
+        
     }
 }
 

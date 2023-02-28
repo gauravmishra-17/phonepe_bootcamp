@@ -7,23 +7,20 @@
 
 import UIKit
 
-class ItemsInCollectionView: UIView, ViewModelDelegate {
+class ItemsInCollectionView: UIView {
 
     var collectionView: UICollectionView = UICollectionView(frame: CGRect(x: 0, y: 0, width: 500, height: 1000), collectionViewLayout: UICollectionViewFlowLayout())
     var itemList:[ItemsViewModel] = []
-    var viewModel : ItemsListViewModel
 
     
-     init(viewModel: ItemsListViewModel) {
-         self.viewModel = viewModel
+     init(itemList: [ItemsViewModel]) {
+         self.itemList = itemList
          
         super.init(frame: .zero)
 
         // Loading the collection view.
         configureCollectionViewTable()
         collectionView.showsVerticalScrollIndicator = false
-         viewModel.getItems()
-         viewModel.delegate = self
         
         //activate constraints
         NSLayoutConstraint.activate(self.constraints)
@@ -32,13 +29,7 @@ class ItemsInCollectionView: UIView, ViewModelDelegate {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
-    func updatedItemList(itemList: [ItemsViewModel]) {
-        self.itemList = itemList
-        DispatchQueue.main.async { [self] in
-            collectionView.reloadData()
-        }
-    }
+
         
     func  configureCollectionViewTable()
     {

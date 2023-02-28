@@ -113,7 +113,7 @@ extension ItemsService
 {
     func viewModelMapper (items : [Item]) -> ItemsListViewModel
     {
-        var viewModel = ItemsListViewModel()
+        var viewModel = ItemsListViewModel(itemList: [])
         
         viewModel.itemList = items.compactMap(
             {
