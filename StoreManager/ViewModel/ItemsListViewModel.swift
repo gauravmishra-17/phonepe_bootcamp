@@ -7,23 +7,35 @@
 
 import UIKit
 
+//protocols that view model will follow
+protocol ViewModelDelegate: AnyObject {
+    func updatedItemList(itemList : [ItemsViewModel])
+   
+}
+
+
 //view model for list of item view models
-class ItemsListViewModel {
-    
-    var itemList : Box<[ItemsViewModel]> = Box([])
+class ItemsListViewModel  {
+
+    var itemList : [ItemsViewModel] = []
+    var delegate: ViewModelDelegate?
     
     init()
     {
-        getItems()
+//        getItems()
     }
 
     
     func getItems()   -> Void
     {
-        ItemsService().getItems{ items in
-            self.itemList.value = items.itemList.value
+        ItemsService().getItems{ [self] items in
+            self.itemList = items.itemList
+            print(items.itemList.count)
+            delegate?.updatedItemList(itemList: items.itemList)
         }
+       
         
+//        print(self.itemList.value.count)
     }
     
     
