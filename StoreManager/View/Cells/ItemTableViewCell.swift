@@ -14,6 +14,7 @@ class ItemTableViewCell: UITableViewCell {
     var itemPriceLabel = UILabel()
     var itemExtraLabel = UILabel()
     var mrpTextLabel = UILabel()
+    var divider = UIView()
     
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
@@ -25,6 +26,7 @@ class ItemTableViewCell: UITableViewCell {
         addSubview(mrpTextLabel)
         addSubview(itemPriceLabel)
         addSubview(itemExtraLabel)
+        addSubview(divider)
         
         //setup the ui components
         configureItemImage()
@@ -32,6 +34,7 @@ class ItemTableViewCell: UITableViewCell {
         configureMrpText()
         configureItemPrice()
         configureItemExtra()
+        configureDivider()
         
         //activate constraints
         NSLayoutConstraint.activate(self.constraints)
@@ -124,7 +127,6 @@ class ItemTableViewCell: UITableViewCell {
     //setup constraints for extra data
     func   configureItemExtra()
     {
-        //        item.numberOfLines = 1
         itemExtraLabel.font = .systemFont(ofSize: 14)
         itemExtraLabel.textColor = UIColor(hexString: "#A3A3A3")
         
@@ -138,6 +140,24 @@ class ItemTableViewCell: UITableViewCell {
         self.addConstraint(const3)
     }
     
+    //setup constraints for divider
+    func configureDivider(){
+        
+        divider.backgroundColor = UIColor(hexString: "#E8E8E8")
+        divider.translatesAutoresizingMaskIntoConstraints = false
+        
+        let const1 = NSLayoutConstraint(item: divider , attribute: .leading, relatedBy: .equal, toItem: itemImageLabel, attribute: .trailing, multiplier: 1, constant: 16)
+        let const2 = NSLayoutConstraint(item: divider , attribute: .trailing, relatedBy: .equal, toItem: self, attribute: .trailing, multiplier: 1, constant: 0)
+        let const3 = NSLayoutConstraint(item: divider , attribute: .top, relatedBy: .equal, toItem: itemImageLabel, attribute: .bottom, multiplier: 1, constant: 8)
+        let const4 = NSLayoutConstraint(item: divider , attribute: .height, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1, constant: 1)
+        
+        
+    
+        self.addConstraint(const1)
+        self.addConstraint(const2)
+        self.addConstraint(const3)
+        self.addConstraint(const4)
+    }
     //get image from url
     func getData(from url: URL, completion: @escaping (Data?, URLResponse?, Error?) -> ()) {
         URLSession.shared.dataTask(with: url, completionHandler: completion).resume()

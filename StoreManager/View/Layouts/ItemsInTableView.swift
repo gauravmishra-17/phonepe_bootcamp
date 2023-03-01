@@ -50,10 +50,10 @@ class ItemsInTableView: UIView {
     func style()
     {
         //set properties on the table
-        tableView.rowHeight = 71
+        tableView.rowHeight = 72
         tableView.showsVerticalScrollIndicator = false
         tableView.register(ItemTableViewCell.self, forCellReuseIdentifier: "ItemTableViewCell")
-        
+        tableView.separatorStyle = UITableViewCell.SeparatorStyle.none
         
         
     }
