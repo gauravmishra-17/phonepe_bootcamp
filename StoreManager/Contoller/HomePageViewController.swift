@@ -85,7 +85,7 @@ class HomePageViewController: UITabBarController, SearchBarDelegate, ViewModelDe
         
         //set image and color according to selection status of tab
         let configuration = UIImage.SymbolConfiguration(hierarchicalColor: UIColor(hexString: "#5DB075"))
-        var circle = UIImage(systemName: "circle.fill", withConfiguration: configuration)
+        let circle = UIImage(systemName: "circle.fill", withConfiguration: configuration)
         for i in 0..<tabs.count {
             tabs[i].image = UIImage(systemName: "circle" )
             tabs[i].selectedImage = circle
@@ -98,15 +98,15 @@ class HomePageViewController: UITabBarController, SearchBarDelegate, ViewModelDe
     {
         searchBar.translatesAutoresizingMaskIntoConstraints = false
         
-        let const1 = NSLayoutConstraint(item: searchBar , attribute: .leading, relatedBy: .equal, toItem: self.view, attribute: .leading, multiplier: 1, constant: 0)
-        let const2 = NSLayoutConstraint(item: searchBar , attribute: .trailing, relatedBy: .equal, toItem: self.view, attribute: .trailing, multiplier: 1, constant: 0)
-        let const3 = NSLayoutConstraint(item: searchBar , attribute: .top, relatedBy: .equal, toItem: self.view, attribute: .top, multiplier: 1, constant: 0)
-        let const4 = NSLayoutConstraint(item: searchBar , attribute: .height, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1, constant: 143)
+        let leading = NSLayoutConstraint(item: searchBar , attribute: .leading, relatedBy: .equal, toItem: self.view, attribute: .leading, multiplier: 1, constant: 0)
+        let trailing = NSLayoutConstraint(item: searchBar , attribute: .trailing, relatedBy: .equal, toItem: self.view, attribute: .trailing, multiplier: 1, constant: 0)
+        let top = NSLayoutConstraint(item: searchBar , attribute: .top, relatedBy: .equal, toItem: self.view, attribute: .top, multiplier: 1, constant: 0)
+        let height = NSLayoutConstraint(item: searchBar , attribute: .height, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1, constant: 143)
         
-        self.view.addConstraint(const1)
-        self.view.addConstraint(const2)
-        self.view.addConstraint(const3)
-        self.view.addConstraint(const4)
+        self.view.addConstraint(leading)
+        self.view.addConstraint(trailing)
+        self.view.addConstraint(top)
+        self.view.addConstraint(height)
         
     }
 }

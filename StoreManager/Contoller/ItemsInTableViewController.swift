@@ -17,7 +17,7 @@ class ItemsInTableViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        //create and load view, and setup constraints
+        //create and load view
         self.view.addSubview(tableView)
         
         //add refresh
@@ -27,6 +27,7 @@ class ItemsInTableViewController: UIViewController {
         //reload view
         self.tableView.tableView.reloadData()
         
+        //setUpConstraints
         setUpConstraints()
     }
     
@@ -60,15 +61,15 @@ class ItemsInTableViewController: UIViewController {
     {
         tableView.translatesAutoresizingMaskIntoConstraints = false
 
-        let const1 = NSLayoutConstraint(item: tableView , attribute: .leading, relatedBy: .equal, toItem: self.view, attribute: .leading, multiplier: 1, constant: 0)
-        let const2 = NSLayoutConstraint(item: tableView , attribute: .trailing, relatedBy: .equal, toItem: self.view, attribute: .trailing, multiplier: 1, constant: 0)
-        let const3 = NSLayoutConstraint(item: tableView , attribute: .top, relatedBy: .equal, toItem: self.view, attribute: .top, multiplier: 1, constant: 0)
-        let const4 = NSLayoutConstraint(item: tableView , attribute: .height, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1, constant: view.frame.height)
+        let leading = NSLayoutConstraint(item: tableView , attribute: .leading, relatedBy: .equal, toItem: self.view, attribute: .leading, multiplier: 1, constant: 0)
+        let trailing = NSLayoutConstraint(item: tableView , attribute: .trailing, relatedBy: .equal, toItem: self.view, attribute: .trailing, multiplier: 1, constant: 0)
+        let top = NSLayoutConstraint(item: tableView , attribute: .top, relatedBy: .equal, toItem: self.view, attribute: .top, multiplier: 1, constant: 0)
+        let height = NSLayoutConstraint(item: tableView , attribute: .height, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1, constant: view.frame.height)
 
-        self.view.addConstraint(const1)
-        self.view.addConstraint(const2)
-        self.view.addConstraint(const3)
-        self.view.addConstraint(const4)
+        self.view.addConstraint(leading)
+        self.view.addConstraint(trailing)
+        self.view.addConstraint(top)
+        self.view.addConstraint(height)
     }
     
 }

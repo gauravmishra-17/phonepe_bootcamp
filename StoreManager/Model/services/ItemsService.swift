@@ -100,6 +100,7 @@ extension ItemsService
         return dataModel
     }
     
+    //mapper for local data to data model
     func coreDataMapper (items : [ItemData]) -> ItemList
     {
         var dataModel = ItemList(items:[])

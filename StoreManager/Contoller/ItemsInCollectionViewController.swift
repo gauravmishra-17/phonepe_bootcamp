@@ -61,15 +61,15 @@ class ItemsInCollectionViewController: UIViewController
     {
         collectionView.translatesAutoresizingMaskIntoConstraints = false
 
-        let const1 = NSLayoutConstraint(item: collectionView , attribute: .leading, relatedBy: .equal, toItem: self.view, attribute: .leading, multiplier: 1, constant: 0)
-        let const2 = NSLayoutConstraint(item: collectionView , attribute: .trailing, relatedBy: .equal, toItem: self.view, attribute: .trailing, multiplier: 1, constant: 0)
-        let const3 = NSLayoutConstraint(item: collectionView , attribute: .top, relatedBy: .equal, toItem: self.view, attribute: .top, multiplier: 1, constant: 0)
-        let const4 = NSLayoutConstraint(item: collectionView , attribute: .height, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1, constant: view.frame.height)
+        let leading = NSLayoutConstraint(item: collectionView , attribute: .leading, relatedBy: .equal, toItem: self.view, attribute: .leading, multiplier: 1, constant: 0)
+        let trailing = NSLayoutConstraint(item: collectionView , attribute: .trailing, relatedBy: .equal, toItem: self.view, attribute: .trailing, multiplier: 1, constant: 0)
+        let top = NSLayoutConstraint(item: collectionView , attribute: .top, relatedBy: .equal, toItem: self.view, attribute: .top, multiplier: 1, constant: 0)
+        let bottom = NSLayoutConstraint(item: collectionView , attribute: .height, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1, constant: view.frame.height)
 
-        self.view.addConstraint(const1)
-        self.view.addConstraint(const2)
-        self.view.addConstraint(const3)
-        self.view.addConstraint(const4)
+        self.view.addConstraint(leading)
+        self.view.addConstraint(trailing)
+        self.view.addConstraint(top)
+        self.view.addConstraint(bottom)
     }
 
 }
