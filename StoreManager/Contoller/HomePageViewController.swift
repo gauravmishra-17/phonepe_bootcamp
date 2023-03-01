@@ -12,10 +12,12 @@ import Combine
 class HomePageViewController: UITabBarController, SearchBarDelegate, ViewModelDelegate {
     
     
-    
+    //tab controllers initialised
     var itemsInTableViewController = ItemsInTableViewController()
     var itemsInCollectionViewController = ItemsInCollectionViewController()
+    private let refreshControl = UIRefreshControl()
     
+    //views and viewmodels initialised
     var searchBar = SearchBarView()
     var viewModel = ItemsListViewModel(itemList: [])
     
@@ -33,8 +35,11 @@ class HomePageViewController: UITabBarController, SearchBarDelegate, ViewModelDe
         //add navigationTabBar
         createNavigationTabBar()
         
+        //setup delegates
         searchBar.delegate = self
         viewModel.delegate = self
+        
+        //load viewmodel with data
         viewModel.getItems()
         
         
@@ -43,28 +48,31 @@ class HomePageViewController: UITabBarController, SearchBarDelegate, ViewModelDe
         NSLayoutConstraint.activate(self.view.constraints)
         
     }
+    
+    //update viewmodel based on searched text
     func updatedViewModel(viewModel: ItemsListViewModel) {
         itemsInTableViewController.updateViewModel(viewModel:viewModel)
         itemsInCollectionViewController.updateViewModel(viewModel:viewModel)
     }
+    
+    //update list of items to be shown in the tabs when data is fecthed
     func updatedItemList(itemList: [ItemsViewModel]) {
         itemsInTableViewController.updatedItemList(itemList: itemList)
         itemsInCollectionViewController.updatedItemList(itemList: itemList)
     }
     
     
-    
+    //create searchBar view
     private func createSearchBar() {
         view.addSubview(searchBar)
         searchBarConstraints()
         
     }
     
+    //create navigationtab bar
     private func createNavigationTabBar() {
         
         //setup viewControllers to point at the tabs
-        
-        
         self.setViewControllers([itemsInTableViewController,itemsInCollectionViewController,
                                  ItemsInCollectionViewController(),ItemsInCollectionViewController(),ItemsInCollectionViewController() ], animated: true)
         
@@ -85,6 +93,7 @@ class HomePageViewController: UITabBarController, SearchBarDelegate, ViewModelDe
     }
     
     
+    //setup contraints for search bar
     func searchBarConstraints()
     {
         searchBar.translatesAutoresizingMaskIntoConstraints = false

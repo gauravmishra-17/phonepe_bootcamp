@@ -44,12 +44,15 @@ class ItemTableViewCell: UITableViewCell {
     
     func  set(item : ItemsViewModel)
     {
-//        downloadImage(from: URL(fileURLWithPath: item.image!))
+        //downloadImage(from: URL(fileURLWithPath: item.image!))
         itemImageLabel.image = UIImage(named: "item-icon")
         itemNameLabel.text = item.name
         itemPriceLabel.text = item.price
         itemExtraLabel.text = item.extra ?? ""
     }
+    
+    
+    //setup constraints for Image
     func configureItemImage(){
         itemImageLabel.layer.cornerRadius = 14
         itemImageLabel.clipsToBounds = true
@@ -68,6 +71,8 @@ class ItemTableViewCell: UITableViewCell {
         self.addConstraint(const4)
         
     }
+    
+    //setup constraints for Name
     func configureItemName(){
         itemNameLabel.numberOfLines = 1
         itemNameLabel.font = .systemFont(ofSize: 18,weight: .semibold)
@@ -82,8 +87,9 @@ class ItemTableViewCell: UITableViewCell {
         self.addConstraint(const1)
         self.addConstraint(const3)
     }
-    func    configureMrpText()
     
+    //setup constraints for mrp text
+    func   configureMrpText()
     {
         mrpTextLabel.text = "MRP:"
         mrpTextLabel.textColor = UIColor(hexString: "#A3A3A3")
@@ -99,7 +105,7 @@ class ItemTableViewCell: UITableViewCell {
         self.addConstraint(const3)
     }
     
-    
+    //setup constraints for price
     func   configureItemPrice()
     {
         itemPriceLabel.numberOfLines = 1
@@ -115,7 +121,7 @@ class ItemTableViewCell: UITableViewCell {
         self.addConstraint(const3)
     }
     
-    
+    //setup constraints for extra data
     func   configureItemExtra()
     {
         //        item.numberOfLines = 1
@@ -132,10 +138,12 @@ class ItemTableViewCell: UITableViewCell {
         self.addConstraint(const3)
     }
     
+    //get image from url
     func getData(from url: URL, completion: @escaping (Data?, URLResponse?, Error?) -> ()) {
         URLSession.shared.dataTask(with: url, completionHandler: completion).resume()
     }
     
+    //download image
     func downloadImage(from url: URL) {
         print("Download Started")
         getData(from: url) { data, response, error in

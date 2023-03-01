@@ -10,15 +10,35 @@ import UIKit
 class ItemsInCollectionViewController: UIViewController
 
 {
+    //table view initialised
     let collectionView  = ItemsInCollectionView(itemList:[] )
+    private let refreshControl = UIRefreshControl()
+
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        //create view and load
+        //create and load view, and setup constraints
         self.view.addSubview(collectionView)
+        
+        //add refresh
+        collectionView.collectionView.refreshControl = refreshControl
+        //trigger on refresh
+        refreshControl.addTarget(self, action:  #selector(handleRefreshControl), for: .valueChanged)
+        //reload view
+        self.collectionView.collectionView.reloadData()
+        
         setUpConstraints()
     }
+    
+    //handle refresh
+    @objc func handleRefreshControl() {
+       
+        ItemsListViewModel(itemList: []).updateItemListFromLocal()
+        self.refreshControl.endRefreshing()
+    }
+    
+    //update itemList to display
     func updatedItemList(itemList: [ItemsViewModel]) {
         self.collectionView.itemList = itemList
         DispatchQueue.main.async { [self] in
@@ -28,7 +48,7 @@ class ItemsInCollectionViewController: UIViewController
 
     }
     
-    
+    //update viewmodel to display
     func updateViewModel(viewModel: ItemsListViewModel )
     {
         self.collectionView.itemList = viewModel.itemList
@@ -36,6 +56,7 @@ class ItemsInCollectionViewController: UIViewController
         
     }
     
+    //setup constraints for table view
     func  setUpConstraints()
     {
         collectionView.translatesAutoresizingMaskIntoConstraints = false

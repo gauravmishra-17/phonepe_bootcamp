@@ -7,21 +7,37 @@
 
 import UIKit
 
-class ItemsInTableViewController: UIViewController, ViewModelDelegate {
-    //view model to hold view data
-//    var viewModel = ItemsListViewModel(itemList: [])
+class ItemsInTableViewController: UIViewController {
+
+    //table view initialised
     let tableView  = ItemsInTableView(itemList:[] )
-
-
+    private let refreshControl = UIRefreshControl()
 
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        //create view and load
+        //create and load view, and setup constraints
         self.view.addSubview(tableView)
+        
+        //add refresh
+        tableView.tableView.refreshControl = refreshControl
+        //trigger on refresh
+        refreshControl.addTarget(self, action:  #selector(handleRefreshControl), for: .valueChanged)
+        //reload view
+        self.tableView.tableView.reloadData()
+        
         setUpConstraints()
     }
+    
+    //handle refresh
+    @objc func handleRefreshControl() {
+       
+        ItemsListViewModel(itemList: []).updateItemListFromLocal()
+        self.refreshControl.endRefreshing()
+    }
+    
+    //update itemList to display
     func updatedItemList(itemList: [ItemsViewModel]) {
         self.tableView.itemList = itemList
         DispatchQueue.main.async { [self] in
@@ -31,7 +47,7 @@ class ItemsInTableViewController: UIViewController, ViewModelDelegate {
 
     }
     
-    
+    //update viewmodel to display
     func updateViewModel(viewModel: ItemsListViewModel )
     {
         self.tableView.itemList = viewModel.itemList
@@ -39,6 +55,7 @@ class ItemsInTableViewController: UIViewController, ViewModelDelegate {
         
     }
     
+    //setup constraints for table view
     func  setUpConstraints()
     {
         tableView.translatesAutoresizingMaskIntoConstraints = false

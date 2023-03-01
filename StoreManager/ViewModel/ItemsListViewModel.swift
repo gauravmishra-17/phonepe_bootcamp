@@ -62,6 +62,14 @@ class ItemsListViewModel  {
         
     }
     
-    
+    func updateItemListFromLocal() -> Void
+    {
+        
+        ItemsService().getItemsFromLocal{ [self] items in
+            self.itemList = items.itemList
+            delegate?.updatedItemList(itemList: self.itemList)
+        }
+        
+    }
     
 }
