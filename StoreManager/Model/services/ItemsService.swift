@@ -83,7 +83,12 @@ class ItemsService
                 
                 ///real data
                                 if(error != nil)
-                                {print("An error occurred while fecthing data from API")}
+                                {print("An error occurred while fecthing data from API")
+                                    CoreDataHelper(managedObjectContext: CoreDataStack.shared.mainContext).fetchItemsFromCoreData(saveItems: {storeItems in
+                                        var dataModel = self.coreDataMapper(items: storeItems)
+                                        completionHandler(self.viewModelMapper(items: dataModel.items))
+                                    })
+                                }
                                 else
                                 {
                 
@@ -131,7 +136,23 @@ extension ItemsService
             {
                 Item(name: $0.name, price: $0.price, extra: $0.extra, image: $0.image)
             })
+        //delete old data stored
+        CoreDataHelper(managedObjectContext: CoreDataStack.shared.mainContext).deleteAll()
         
+        //update with new data fetched from the api
+        CoreDataHelper(managedObjectContext: CoreDataStack.shared.mainContext).saveStoreItems(items: dataModel.items)
+        return dataModel
+    }
+    
+    func coreDataMapper (items : [ItemData]) -> ItemList
+    {
+        var dataModel = ItemList(items:[])
+        
+        dataModel.items = items.compactMap(
+            {
+                Item(name: $0.name, price: $0.price, extra: $0.extra, image: $0.image)
+            })
+
         return dataModel
     }
 }

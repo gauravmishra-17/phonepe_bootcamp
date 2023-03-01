@@ -27,13 +27,12 @@ class ItemsListViewModel  {
     
     func getItems()   -> Void
     {
+        
         ItemsService().getItems{ [self] items in
             self.itemList = items.itemList
             delegate?.updatedItemList(itemList: self.itemList)
         }
-        
-        
-        
+
         
     }
     func updateItemList(text : String) -> ItemsListViewModel
@@ -62,5 +61,7 @@ class ItemsListViewModel  {
         return ItemsListViewModel(itemList: filteredItems)
         
     }
+    
+    
     
 }
