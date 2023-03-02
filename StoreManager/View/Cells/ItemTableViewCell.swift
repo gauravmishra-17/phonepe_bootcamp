@@ -47,8 +47,7 @@ class ItemTableViewCell: UITableViewCell {
     
     func  set(item : ItemsViewModel)
     {
-        //downloadImage(from: URL(fileURLWithPath: item.image!))
-        itemImageLabel.image = UIImage(named: "item-icon")
+        downloadImage(imageUrl: item.image!)
         itemNameLabel.text = item.name
         itemPriceLabel.text = item.price
         itemExtraLabel.text = item.extra ?? ""
@@ -158,23 +157,21 @@ class ItemTableViewCell: UITableViewCell {
         self.addConstraint(const3)
         self.addConstraint(const4)
     }
-    //get image from url
-    func getData(from url: URL, completion: @escaping (Data?, URLResponse?, Error?) -> ()) {
-        URLSession.shared.dataTask(with: url, completionHandler: completion).resume()
-    }
-    
+ 
     //download image
-    func downloadImage(from url: URL) {
-        print("Download Started")
-        getData(from: url) { data, response, error in
-            guard let data = data, error == nil else { return }
-            print(response?.suggestedFilename ?? url.lastPathComponent)
-            print("Download Finished")
-            // always update the UI from the main thread
-            DispatchQueue.main.async() { [weak self] in
-                self?.itemImageLabel.image = UIImage(data: data)!
+    func downloadImage(imageUrl: String) {
+        if let data = try? Data(contentsOf: URL(string: imageUrl)!) {
+            if let image = UIImage(data: data) {
+                Task {
+                    self.itemImageLabel.image = image
+                }
+            }
+        } else {
+            Task {
+                self.itemImageLabel.image =  UIImage(named: "item-icon")
             }
         }
+        
     }
 }
 
