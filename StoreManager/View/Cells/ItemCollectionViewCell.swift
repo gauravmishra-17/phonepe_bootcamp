@@ -36,8 +36,7 @@ class ItemCollectionViewCell: UICollectionViewCell {
     
     func  set(item : ItemsViewModel)
     {
-        //        downloadImage(from: URL(fileURLWithPath: item.image!))
-        itemImageLabel.image = UIImage(named: "item-icon")
+        downloadImage(imageUrl: item.image!)
         itemNameLabel.text = item.name
         itemPriceLabel.text = item.price
         itemExtraLabel.text = item.extra ?? ""
@@ -90,6 +89,22 @@ class ItemCollectionViewCell: UICollectionViewCell {
         
         self.addConstraint(const1)
         self.addConstraint(const3)
+    }
+    
+    //download image
+    func downloadImage(imageUrl: String) {
+        if let data = try? Data(contentsOf: URL(string: imageUrl)!) {
+            if let image = UIImage(data: data) {
+                Task {
+                    self.itemImageLabel.image = image
+                }
+            }
+        } else {
+            Task {
+                self.itemImageLabel.image =  UIImage(named: "item-icon")
+            }
+        }
+        
     }
     
 }

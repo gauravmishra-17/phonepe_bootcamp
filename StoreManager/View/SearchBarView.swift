@@ -151,8 +151,9 @@ class SearchBarView: UIView, UISearchBarDelegate {
         
         let constraint2 = NSLayoutConstraint(item: searchBarView, attribute: .top, relatedBy: .equal, toItem: self, attribute: .top, multiplier: 1, constant: 72)
         
+        let constraint4 = NSLayoutConstraint(item: searchBarView, attribute: .trailing, relatedBy: .equal, toItem: self, attribute: .trailing, multiplier: 1, constant: -34)
         let constraint3 = NSLayoutConstraint(item: searchBarView, attribute: .height, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1, constant: 50)
-        let constraint4 = NSLayoutConstraint(item: searchBarView, attribute: .width, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1, constant: 343)
+       
         
         self.addConstraint(constraint1)
         self.addConstraint(constraint2)

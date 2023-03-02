@@ -47,8 +47,7 @@ class ItemTableViewCell: UITableViewCell {
     
     func  set(item : ItemsViewModel)
     {
-        //downloadImage(from: URL(fileURLWithPath: item.image!))
-        itemImageLabel.image = UIImage(named: "item-icon")
+        downloadImage(imageUrl: item.image!)
         itemNameLabel.text = item.name
         itemPriceLabel.text = item.price
         itemExtraLabel.text = item.extra ?? ""
@@ -150,31 +149,29 @@ class ItemTableViewCell: UITableViewCell {
         let const2 = NSLayoutConstraint(item: divider , attribute: .trailing, relatedBy: .equal, toItem: self, attribute: .trailing, multiplier: 1, constant: 0)
         let const3 = NSLayoutConstraint(item: divider , attribute: .top, relatedBy: .equal, toItem: itemImageLabel, attribute: .bottom, multiplier: 1, constant: 8)
         let const4 = NSLayoutConstraint(item: divider , attribute: .height, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1, constant: 1)
-        
-        
+
     
         self.addConstraint(const1)
         self.addConstraint(const2)
         self.addConstraint(const3)
         self.addConstraint(const4)
     }
-    //get image from url
-    func getData(from url: URL, completion: @escaping (Data?, URLResponse?, Error?) -> ()) {
-        URLSession.shared.dataTask(with: url, completionHandler: completion).resume()
-    }
-    
+
+ 
     //download image
-    func downloadImage(from url: URL) {
-        print("Download Started")
-        getData(from: url) { data, response, error in
-            guard let data = data, error == nil else { return }
-            print(response?.suggestedFilename ?? url.lastPathComponent)
-            print("Download Finished")
-            // always update the UI from the main thread
-            DispatchQueue.main.async() { [weak self] in
-                self?.itemImageLabel.image = UIImage(data: data)!
+    func downloadImage(imageUrl: String) {
+        if let data = try? Data(contentsOf: URL(string: imageUrl)!) {
+            if let image = UIImage(data: data) {
+                Task {
+                    self.itemImageLabel.image = image
+                }
+            }
+        } else {
+            Task {
+                self.itemImageLabel.image =  UIImage(named: "item-icon")
             }
         }
+        
     }
 }
 
