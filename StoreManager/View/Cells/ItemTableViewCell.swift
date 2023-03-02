@@ -149,14 +149,14 @@ class ItemTableViewCell: UITableViewCell {
         let const2 = NSLayoutConstraint(item: divider , attribute: .trailing, relatedBy: .equal, toItem: self, attribute: .trailing, multiplier: 1, constant: 0)
         let const3 = NSLayoutConstraint(item: divider , attribute: .top, relatedBy: .equal, toItem: itemImageLabel, attribute: .bottom, multiplier: 1, constant: 8)
         let const4 = NSLayoutConstraint(item: divider , attribute: .height, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1, constant: 1)
-        
-        
+
     
         self.addConstraint(const1)
         self.addConstraint(const2)
         self.addConstraint(const3)
         self.addConstraint(const4)
     }
+
  
     //download image
     func downloadImage(imageUrl: String) {
