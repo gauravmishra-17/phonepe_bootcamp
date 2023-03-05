@@ -11,6 +11,10 @@ import Combine
 //create root view controller as a Container View Controller - of type - UITabBarController
 class HomePageViewController: UITabBarController, SearchBarDelegate, ViewModelDelegate {
     
+    enum MenuState{
+        case opened
+        case closed
+    }
     
     //tab controllers initialised
     var itemsInTableViewController = ItemsInTableViewController()
@@ -20,6 +24,12 @@ class HomePageViewController: UITabBarController, SearchBarDelegate, ViewModelDe
     //views and viewmodels initialised
     var searchBar = SearchBarView()
     var viewModel = ItemsListViewModel(itemList: [])
+    var drawerMenu = UIView()
+    var tapGesture = UITapGestureRecognizer()
+    var widthMenu = NSLayoutConstraint()
+    
+    //set default menu drawer value
+    private var menuState: MenuState = .closed
     
     
     override func viewDidLoad() {
@@ -34,6 +44,9 @@ class HomePageViewController: UITabBarController, SearchBarDelegate, ViewModelDe
         
         //add navigationTabBar
         createNavigationTabBar()
+        
+        //add drawer menu
+        createDrawerMenu()
         
         //setup delegates
         searchBar.delegate = self
@@ -108,6 +121,65 @@ class HomePageViewController: UITabBarController, SearchBarDelegate, ViewModelDe
         self.view.addConstraint(top)
         self.view.addConstraint(height)
         
+    }
+    
+    func createDrawerMenu()
+    {
+        drawerMenu.translatesAutoresizingMaskIntoConstraints = false
+        drawerMenu.backgroundColor = .white
+        
+        view.addSubview(drawerMenu)
+        
+        let leading = NSLayoutConstraint(item: drawerMenu , attribute: .leading, relatedBy: .equal, toItem: self.view, attribute: .leading, multiplier: 1, constant: 0)
+        let top = NSLayoutConstraint(item: drawerMenu , attribute: .top, relatedBy: .equal, toItem: self.view, attribute: .top, multiplier: 1, constant: 0)
+        let bottom = NSLayoutConstraint(item: drawerMenu , attribute: .bottom, relatedBy: .equal, toItem: self.view, attribute: .bottom, multiplier: 1, constant: 0)
+        let width = NSLayoutConstraint(item: self.drawerMenu , attribute: .width, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1, constant: 0)
+        widthMenu = width
+        self.view.addConstraint(leading)
+        self.view.addConstraint(top)
+        self.view.addConstraint(bottom)
+        self.view.addConstraint(widthMenu)
+
+    }
+    
+    func drawerMenuOnTapped() {
+        switch menuState {
+        case .opened:
+            UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 0.8, initialSpringVelocity: 0, options: .curveEaseInOut, animations: {
+                self.widthMenu.constant = 0
+                self.menuState = .closed
+                self.view.gestureRecognizers?.forEach(self.view.removeGestureRecognizer)
+                self.updateViewConstraints()
+            }, completion: {
+                done in
+                if done {
+                    
+                }
+            })
+        case .closed:
+            UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 0.8, initialSpringVelocity: 0, options: .curveEaseOut, animations: {
+                self.widthMenu.constant = self.view.frame.width/2
+                self.view.addGestureRecognizer(self.tapGesture)
+                self.tapGesture.addTarget(self, action: #selector(self.onTapped))
+                self.menuState = .opened
+                self.updateViewConstraints()
+            }, completion: {
+                done in
+                if done {
+                    
+                }
+            })
+            break
+        }
+    }
+    
+    @objc
+    func onTapped(){
+        drawerMenuOnTapped()
+    }
+    
+    override func updateViewConstraints() {
+        super.updateViewConstraints()
     }
 }
 

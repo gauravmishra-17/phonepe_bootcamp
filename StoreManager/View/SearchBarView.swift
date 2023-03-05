@@ -9,6 +9,7 @@ import UIKit
 
 protocol SearchBarDelegate {
     func updatedViewModel(viewModel: ItemsListViewModel)
+    func drawerMenuOnTapped()
 }
 
 class SearchBarView: UIView, UISearchBarDelegate {
@@ -18,6 +19,7 @@ class SearchBarView: UIView, UISearchBarDelegate {
     var titleUI :UIView = UIView()
     var filterUI :UIView = UIView()
     let searchBarView = UISearchBar()
+    let drawerMenu = UIButton(type: .custom)
     var viewModel = ItemsListViewModel(itemList: [])
     var delegate: SearchBarDelegate?
     
@@ -51,6 +53,9 @@ class SearchBarView: UIView, UISearchBarDelegate {
         
         //create Search bar UI
         createSearchBar()
+        
+        //create drawer menu
+        createDrawerMenu()
         
         //activate constraints
         NSLayoutConstraint.activate(self.constraints)
@@ -162,12 +167,37 @@ class SearchBarView: UIView, UISearchBarDelegate {
         self.addConstraint(constraint4)
     }
     
+    func createDrawerMenu()
+    {
+        drawerMenu.setImage(UIImage(systemName: "list.dash")?.withTintColor(.black, renderingMode: .alwaysOriginal), for: .normal)
+        drawerMenu.addTarget(self, action: #selector(onPressed), for: .touchUpInside)
+        
+        self.addSubview(drawerMenu)
+        
+        drawerMenu.translatesAutoresizingMaskIntoConstraints = false
+        
+        let constraint1 = NSLayoutConstraint(item: drawerMenu, attribute: .leading, relatedBy: .equal, toItem: self, attribute: .leading, multiplier: 1, constant: 20)
+        
+        let constraint2 = NSLayoutConstraint(item: drawerMenu, attribute: .top, relatedBy: .equal, toItem: self, attribute: .top, multiplier: 1, constant: 35)
+        
+        self.addConstraint(constraint1)
+        self.addConstraint(constraint2)
+        
+        
+    }
+    
     
     //update the displayed list of items based on searched text
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         let newViewModel = viewModel.updateItemList(text: searchText)
         delegate?.updatedViewModel(viewModel: newViewModel )
 
+    }
+    
+    @objc
+    func onPressed()
+    {
+        delegate?.drawerMenuOnTapped()
     }
 
     
