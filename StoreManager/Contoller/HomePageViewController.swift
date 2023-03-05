@@ -52,6 +52,7 @@ class HomePageViewController: UITabBarController, SearchBarDelegate, ViewModelDe
         searchBar.delegate = self
         viewModel.delegate = self
         
+        
         //load viewmodel with data
         viewModel.getItems()
         

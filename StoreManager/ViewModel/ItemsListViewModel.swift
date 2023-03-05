@@ -62,14 +62,29 @@ class ItemsListViewModel  {
         
     }
     
-    func updateItemListFromLocal() -> Void
+    func updateItemListFromLocal() -> [ItemsViewModel]
     {
         
         ItemsService().getItemsFromLocal{ [self] items in
             self.itemList = items.itemList
             delegate?.updatedItemList(itemList: self.itemList)
         }
+        return self.itemList
         
     }
+    
+    func updateItemList(size : Int) -> ItemsListViewModel
+    {
+        updateItemListFromLocal()
+        print(self.itemList.count)
+        print("mmm")
+        print(size)
+        self.itemList.removeLast(self.itemList.count - size)
+        
+        
+        return ItemsListViewModel(itemList: self.itemList)
+        
+    }
+    
     
 }

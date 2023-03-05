@@ -7,12 +7,14 @@
 
 import UIKit
 
-class ItemsInTableViewController: UIViewController {
+class ItemsInTableViewController: UIViewController, SliderDelegate {
+    
+    
 
     //table view initialised
     let tableView  = ItemsInTableView(itemList:[] )
     private let refreshControl = UIRefreshControl()
-    var sliderView = SliderView(maximumValue: 9, minimumValue: 0)
+    var sliderView = SliderView(maximumValue: 9, minimumValue: 1)
 
     
     override func viewDidLoad() {
@@ -29,6 +31,9 @@ class ItemsInTableViewController: UIViewController {
         refreshControl.addTarget(self, action:  #selector(handleRefreshControl), for: .valueChanged)
         //reload view
         self.tableView.tableView.reloadData()
+        
+        
+        sliderView.sliderDelegate = self
         
         //setUpConstraints
         setUpConstraints()
@@ -59,6 +64,14 @@ class ItemsInTableViewController: UIViewController {
     {
         self.tableView.itemList = viewModel.itemList
         self.tableView.tableView.reloadData()
+        
+    }
+    
+    func numberOfItemsToShow(size: Int) {
+        
+        self.tableView.itemList = ItemsListViewModel(itemList: []).updateItemList(size: size).itemList
+        self.tableView.tableView.reloadData()
+
         
     }
     

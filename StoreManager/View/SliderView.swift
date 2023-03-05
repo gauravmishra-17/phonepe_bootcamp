@@ -7,13 +7,16 @@
 
 import UIKit
 
-
+protocol SliderDelegate {
+    func numberOfItemsToShow(size: Int)
+}
 
 class SliderView: UIView {
 
     var maximumValue = 0
     var minimumValue = 0
     let slider = UISlider()
+    var sliderDelegate: SliderDelegate?
     
     init(maximumValue: Int, minimumValue: Int)
     {
@@ -63,6 +66,7 @@ class SliderView: UIView {
     @objc
     func changeValue(slider: UISlider)
     {
+        sliderDelegate?.numberOfItemsToShow(size: Int(slider.value))
     }
 
     
