@@ -12,6 +12,7 @@ class ItemsInTableViewController: UIViewController {
     //table view initialised
     let tableView  = ItemsInTableView(itemList:[] )
     private let refreshControl = UIRefreshControl()
+    var sliderView = SliderView(maximumValue: 9, minimumValue: 0)
 
     
     override func viewDidLoad() {
@@ -19,6 +20,8 @@ class ItemsInTableViewController: UIViewController {
         
         //create and load view
         self.view.addSubview(tableView)
+        self.view.addSubview(sliderView)
+
         
         //add refresh
         tableView.tableView.refreshControl = refreshControl
@@ -29,6 +32,9 @@ class ItemsInTableViewController: UIViewController {
         
         //setUpConstraints
         setUpConstraints()
+        setUpConstraintsForSlider()
+        
+        NSLayoutConstraint.activate(self.view.constraints)
     }
     
     //handle refresh
@@ -70,6 +76,25 @@ class ItemsInTableViewController: UIViewController {
         self.view.addConstraint(trailing)
         self.view.addConstraint(top)
         self.view.addConstraint(height)
+    }
+    
+    func setUpConstraintsForSlider(){
+        sliderView.translatesAutoresizingMaskIntoConstraints = false
+        
+        let leading = NSLayoutConstraint(item: sliderView , attribute: .leading, relatedBy: .equal, toItem: self.view, attribute: .leading, multiplier: 1, constant: 0 )
+        let trailing = NSLayoutConstraint(item: sliderView , attribute: .trailing, relatedBy: .equal, toItem: self.view, attribute: .trailing, multiplier: 1, constant: 0)
+        let top = NSLayoutConstraint(item: sliderView, attribute: .top, relatedBy: .equal, toItem: self.view, attribute: .top, multiplier: 1, constant:595 )
+        let width = NSLayoutConstraint(item: sliderView , attribute: .width, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1, constant: view.frame.width )
+        let height = NSLayoutConstraint(item: sliderView , attribute: .height, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1, constant: 200 )
+
+        
+        self.view.addConstraint(leading)
+        self.view.addConstraint(top)
+        self.view.addConstraint(width)
+        self.view.addConstraint(trailing)
+        self.view.addConstraint(height)
+
+
     }
     
 }

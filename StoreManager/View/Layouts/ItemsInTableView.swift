@@ -14,6 +14,7 @@ class ItemsInTableView: UIView {
     var itemList:[ItemsViewModel] = []
     
     var tableView = UITableView()
+//    var sliderView = SliderView(maximumValue: 9, minimumValue: 0)
     
     init(itemList: [ItemsViewModel]) {
         self.itemList = itemList
@@ -37,6 +38,7 @@ class ItemsInTableView: UIView {
     {
         //add subview
         addSubview(tableView)
+//        addSubview(sliderView)
         
         //set delegates
         setTableViewDelegates()
@@ -61,6 +63,11 @@ class ItemsInTableView: UIView {
     //constranits in the view
     func setupConstraints()
     {
+        setUpConstraintsForTableView()
+//        setUpConstraintsForSlider()
+    }
+    
+    func setUpConstraintsForTableView(){
         tableView.translatesAutoresizingMaskIntoConstraints = false
         
         let const1 = NSLayoutConstraint(item: tableView , attribute: .leading, relatedBy: .equal, toItem: self, attribute: .leading, multiplier: 1, constant: 34)
@@ -74,6 +81,7 @@ class ItemsInTableView: UIView {
         self.addConstraint(const3)
         self.addConstraint(const4)
     }
+
     
 }
 
