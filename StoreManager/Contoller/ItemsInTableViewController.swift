@@ -14,7 +14,8 @@ class ItemsInTableViewController: UIViewController, SliderDelegate {
     //table view initialised
     let tableView  = ItemsInTableView(itemList:[] )
     private let refreshControl = UIRefreshControl()
-    var sliderView = SliderView(maximumValue: 9, minimumValue: 1)
+    var sliderView = SliderView(maximumValue: 0, minimumValue: 0)
+    var unfilteredViewModel = ItemsListViewModel(itemList: [])
 
     
     override func viewDidLoad() {
@@ -52,24 +53,28 @@ class ItemsInTableViewController: UIViewController, SliderDelegate {
     //update itemList to display
     func updatedItemList(itemList: [ItemsViewModel]) {
         self.tableView.itemList = itemList
+        self.unfilteredViewModel.itemList = itemList
         DispatchQueue.main.async { [self] in
-            self.tableView.tableView.reloadData()
-
+            self.sliderView.slider.maximumValue = Float(itemList.count)
+            self.sliderView.slider.value = Float(itemList.count)
+        self.tableView.tableView.reloadData()
         }
-
     }
     
     //update viewmodel to display
     func updateViewModel(viewModel: ItemsListViewModel )
     {
         self.tableView.itemList = viewModel.itemList
+        self.unfilteredViewModel.itemList = viewModel.itemList
+        sliderView.slider.maximumValue = Float(viewModel.itemList.count)
+        self.sliderView.slider.value = Float(viewModel.itemList.count)
         self.tableView.tableView.reloadData()
         
     }
     
     func numberOfItemsToShow(size: Int) {
-        
-        self.tableView.itemList = ItemsListViewModel(itemList: []).updateItemList(size: size).itemList
+        print(self.tableView.itemList)
+        self.tableView.itemList = ItemsListViewModel(itemList: []).updateItemList(size: size, itemList: unfilteredViewModel.itemList ).itemList
         self.tableView.tableView.reloadData()
 
         

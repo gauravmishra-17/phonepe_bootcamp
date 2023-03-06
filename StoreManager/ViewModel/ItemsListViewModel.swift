@@ -73,18 +73,14 @@ class ItemsListViewModel  {
         
     }
     
-    func updateItemList(size : Int) -> ItemsListViewModel
+    func updateItemList(size : Int, itemList: [ItemsViewModel]) -> ItemsListViewModel
     {
-        updateItemListFromLocal()
-        print(self.itemList.count)
-        print("mmm")
-        print(size)
-        self.itemList.removeLast(self.itemList.count - size)
+        var filteredItems: [ItemsViewModel] = itemList
+        filteredItems.removeLast(filteredItems.count - size)
         
         
-        return ItemsListViewModel(itemList: self.itemList)
+        return ItemsListViewModel(itemList: filteredItems)
         
     }
-    
     
 }
