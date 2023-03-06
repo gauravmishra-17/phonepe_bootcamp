@@ -36,6 +36,7 @@
 		8D4548DD29AEF78F00A59570 /* ItemData+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D4548DB29AEF78F00A59570 /* ItemData+CoreDataProperties.swift */; };
 		8D4548DF29AF070600A59570 /* CoreDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D4548DE29AF070600A59570 /* CoreDataStack.swift */; };
 		8D4548E129AF07D600A59570 /* CoreDataHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D4548E029AF07D600A59570 /* CoreDataHelper.swift */; };
+		8D78F2B429B498BB004DCBF2 /* SliderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D78F2B329B498BB004DCBF2 /* SliderView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -89,6 +90,7 @@
 		8D4548DB29AEF78F00A59570 /* ItemData+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ItemData+CoreDataProperties.swift"; sourceTree = SOURCE_ROOT; };
 		8D4548DE29AF070600A59570 /* CoreDataStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataStack.swift; sourceTree = "<group>"; };
 		8D4548E029AF07D600A59570 /* CoreDataHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataHelper.swift; sourceTree = "<group>"; };
+		8D78F2B329B498BB004DCBF2 /* SliderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SliderView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -186,6 +188,7 @@
 				8D4548CA29ADC9CA00A59570 /* SearchBarView.swift */,
 				8D45487D29AC78DA00A59570 /* Cells */,
 				8D45487C29AC78A900A59570 /* Layouts */,
+				8D78F2B329B498BB004DCBF2 /* SliderView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -433,6 +436,7 @@
 				8D4548DF29AF070600A59570 /* CoreDataStack.swift in Sources */,
 				8D45487729AB9DF800A59570 /* ItemsInTableView.swift in Sources */,
 				8D45486529A3506F00A59570 /* UIColorExt.swift in Sources */,
+				8D78F2B429B498BB004DCBF2 /* SliderView.swift in Sources */,
 				8D454859299E088700A59570 /* ResultDto.swift in Sources */,
 				8D45487229AB970400A59570 /* ItemsListViewModel.swift in Sources */,
 				8D454857299DDBB400A59570 /* ItemsService.swift in Sources */,

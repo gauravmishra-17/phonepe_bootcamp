@@ -52,6 +52,7 @@ class HomePageViewController: UITabBarController, SearchBarDelegate, ViewModelDe
         searchBar.delegate = self
         viewModel.delegate = self
         
+        
         //load viewmodel with data
         viewModel.getItems()
         
@@ -72,6 +73,7 @@ class HomePageViewController: UITabBarController, SearchBarDelegate, ViewModelDe
     func updatedItemList(itemList: [ItemsViewModel]) {
         itemsInTableViewController.updatedItemList(itemList: itemList)
         itemsInCollectionViewController.updatedItemList(itemList: itemList)
+
     }
     
     
@@ -139,7 +141,7 @@ class HomePageViewController: UITabBarController, SearchBarDelegate, ViewModelDe
         self.view.addConstraint(top)
         self.view.addConstraint(bottom)
         self.view.addConstraint(widthMenu)
-
+        
     }
     
     func drawerMenuOnTapped() {
@@ -149,7 +151,6 @@ class HomePageViewController: UITabBarController, SearchBarDelegate, ViewModelDe
                 self.widthMenu.constant = 0
                 self.menuState = .closed
                 self.view.gestureRecognizers?.forEach(self.view.removeGestureRecognizer)
-                self.updateViewConstraints()
             }, completion: {
                 done in
                 if done {
@@ -162,7 +163,6 @@ class HomePageViewController: UITabBarController, SearchBarDelegate, ViewModelDe
                 self.view.addGestureRecognizer(self.tapGesture)
                 self.tapGesture.addTarget(self, action: #selector(self.onTapped))
                 self.menuState = .opened
-                self.updateViewConstraints()
             }, completion: {
                 done in
                 if done {
@@ -178,8 +178,5 @@ class HomePageViewController: UITabBarController, SearchBarDelegate, ViewModelDe
         drawerMenuOnTapped()
     }
     
-    override func updateViewConstraints() {
-        super.updateViewConstraints()
-    }
 }
 

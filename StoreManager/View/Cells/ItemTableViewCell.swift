@@ -160,18 +160,18 @@ class ItemTableViewCell: UITableViewCell {
  
     //download image
     func downloadImage(imageUrl: String) {
-        if let data = try? Data(contentsOf: URL(string: imageUrl)!) {
-            if let image = UIImage(data: data) {
-                Task {
-                    self.itemImageLabel.image = image
-                }
-            }
-        } else {
-            Task {
+//        if let data = try? Data(contentsOf: URL(string: imageUrl)!) {
+//            if let image = UIImage(data: data) {
+//                Task {
+//                    self.itemImageLabel.image = image
+//                }
+//            }
+//        } else {
+//            Task {
                 self.itemImageLabel.image =  UIImage(named: "item-icon")
-            }
-        }
-        
+//            }
+//        }
+//
     }
 }
 
