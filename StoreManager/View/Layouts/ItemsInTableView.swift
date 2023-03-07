@@ -9,7 +9,7 @@ import UIKit
 
 
 protocol ItemsInTableViewDelegate: AnyObject {
-    func showDetailsPage()
+    func showDetailsPage(item: ItemsViewModel, image: UIImage?)
     
 }
 
@@ -55,7 +55,8 @@ class ItemsInTableView: UIView {
                     //do what you want to cell here
                     print(tappedCell.itemNameLabel)
                     print(tappedCell.itemPriceLabel)
-                    delegate?.showDetailsPage()
+                    var item = ItemsViewModel(name: tappedCell.itemNameLabel.text, price: tappedCell.itemPriceLabel.text, extra: tappedCell.itemExtraLabel.text, image: "")
+                    delegate?.showDetailsPage(item: item, image:tappedCell.itemImageLabel.image)
                 }
             }
         }

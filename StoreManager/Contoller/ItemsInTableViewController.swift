@@ -9,10 +9,6 @@ import UIKit
 
 class ItemsInTableViewController: UIViewController, SliderDelegate, ItemsInTableViewDelegate {
 
-    
-    
-    
-
     //table view initialised
     let tableView  = ItemsInTableView(itemList:[] )
     private let refreshControl = UIRefreshControl()
@@ -115,12 +111,11 @@ class ItemsInTableViewController: UIViewController, SliderDelegate, ItemsInTable
 
     }
     
-    func showDetailsPage() {
-        let vc = UIViewController()
+    func showDetailsPage(item: ItemsViewModel, image: UIImage?) {
+        let vc = ItemDetailsPageViewController(item: item, image: image)
         vc.view.backgroundColor = .white
         navigationController?.pushViewController(vc, animated: true)
     }
-    
 }
 
 
