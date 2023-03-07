@@ -9,7 +9,7 @@ import UIKit
 import Combine
 
 //create root view controller as a Container View Controller - of type - UITabBarController
-class HomePageViewController: UITabBarController, SearchBarDelegate, ViewModelDelegate {
+class HomePageViewController: UITabBarController, SearchBarDelegate, ViewModelDelegate, UIPopoverPresentationControllerDelegate {
     
     enum MenuState{
         case opened
@@ -27,6 +27,8 @@ class HomePageViewController: UITabBarController, SearchBarDelegate, ViewModelDe
     var drawerMenu = UIView()
     var tapGesture = UITapGestureRecognizer()
     var widthMenu = NSLayoutConstraint()
+    
+    
     
     //set default menu drawer value
     private var menuState: MenuState = .closed
@@ -56,11 +58,12 @@ class HomePageViewController: UITabBarController, SearchBarDelegate, ViewModelDe
         //load viewmodel with data
         viewModel.getItems()
         
-        
-        
         //activate constraints
         NSLayoutConstraint.activate(self.view.constraints)
         
+    }
+    public func adaptivePresentationStyle(for controller: UIPresentationController, traitCollection: UITraitCollection) -> UIModalPresentationStyle {
+        return .none
     }
     
     //update viewmodel based on searched text
@@ -73,9 +76,8 @@ class HomePageViewController: UITabBarController, SearchBarDelegate, ViewModelDe
     func updatedItemList(itemList: [ItemsViewModel]) {
         itemsInTableViewController.updatedItemList(itemList: itemList)
         itemsInCollectionViewController.updatedItemList(itemList: itemList)
-
+        
     }
-    
     
     //create searchBar view
     private func createSearchBar() {
@@ -171,6 +173,16 @@ class HomePageViewController: UITabBarController, SearchBarDelegate, ViewModelDe
             })
             break
         }
+    }
+    func filterButtonOnTapped() {
+        let filterPopoverVC = PopOverViewController()
+        filterPopoverVC.modalPresentationStyle = .popover
+        filterPopoverVC.popoverPresentationController?.sourceView = searchBar.filterUI
+        filterPopoverVC.popoverPresentationController?.sourceRect = searchBar.filterUI.bounds
+        filterPopoverVC.popoverPresentationController?.permittedArrowDirections = .up
+        filterPopoverVC.popoverPresentationController?.delegate = self
+        
+        self.present(filterPopoverVC, animated: true, completion: nil)
     }
     
     @objc
