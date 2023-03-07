@@ -37,6 +37,7 @@
 		8D4548DF29AF070600A59570 /* CoreDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D4548DE29AF070600A59570 /* CoreDataStack.swift */; };
 		8D4548E129AF07D600A59570 /* CoreDataHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D4548E029AF07D600A59570 /* CoreDataHelper.swift */; };
 		8D78F2B429B498BB004DCBF2 /* SliderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D78F2B329B498BB004DCBF2 /* SliderView.swift */; };
+		8D78F2B629B59D25004DCBF2 /* PopOverViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D78F2B529B59D25004DCBF2 /* PopOverViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -91,6 +92,7 @@
 		8D4548DE29AF070600A59570 /* CoreDataStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataStack.swift; sourceTree = "<group>"; };
 		8D4548E029AF07D600A59570 /* CoreDataHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataHelper.swift; sourceTree = "<group>"; };
 		8D78F2B329B498BB004DCBF2 /* SliderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SliderView.swift; sourceTree = "<group>"; };
+		8D78F2B529B59D25004DCBF2 /* PopOverViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopOverViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -200,6 +202,7 @@
 				8D454818299CDF8800A59570 /* HomePageViewController.swift */,
 				8D45485C29A3269B00A59570 /* ItemsInTableViewController.swift */,
 				8D45485E29A3273B00A59570 /* ItemsInCollectionViewController.swift */,
+				8D78F2B529B59D25004DCBF2 /* PopOverViewController.swift */,
 			);
 			path = Contoller;
 			sourceTree = "<group>";
@@ -440,6 +443,7 @@
 				8D454859299E088700A59570 /* ResultDto.swift in Sources */,
 				8D45487229AB970400A59570 /* ItemsListViewModel.swift in Sources */,
 				8D454857299DDBB400A59570 /* ItemsService.swift in Sources */,
+				8D78F2B629B59D25004DCBF2 /* PopOverViewController.swift in Sources */,
 				8D45484F299DD41800A59570 /* Item.swift in Sources */,
 				8D454855299DD6E700A59570 /* ItemListDto.swift in Sources */,
 				8D454851299DD50200A59570 /* ItemList.swift in Sources */,

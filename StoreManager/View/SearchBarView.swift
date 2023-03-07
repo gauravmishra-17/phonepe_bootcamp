@@ -10,14 +10,15 @@ import UIKit
 protocol SearchBarDelegate {
     func updatedViewModel(viewModel: ItemsListViewModel)
     func drawerMenuOnTapped()
+    func filterButtonOnTapped()
 }
 
-class SearchBarView: UIView, UISearchBarDelegate {
+class SearchBarView: UIView, UISearchBarDelegate, UIPopoverPresentationControllerDelegate {
     
     
     //declare all views to be added as part of search bar
-    var titleUI :UIView = UIView()
-    var filterUI :UIView = UIView()
+    var titleUI  = UILabel()
+    var filterUI =  UILabel()
     let searchBarView = UISearchBar()
     let drawerMenu = UIButton(type: .custom)
     var viewModel = ItemsListViewModel(itemList: [])
@@ -127,17 +128,22 @@ class SearchBarView: UIView, UISearchBarDelegate {
         filterView.textColor = UIColor(hexString: "#5DB075")
         self.addSubview(filterView)
         
+        filterView.isUserInteractionEnabled = true
+        let filterViewTapGesture = UITapGestureRecognizer(target:self,action:#selector(self.onFilterViewTap))
+        filterView.addGestureRecognizer(filterViewTapGesture)
+        
         //setup constarints
-
         filterView.translatesAutoresizingMaskIntoConstraints = false
         
-
+        
         let constraint1 = NSLayoutConstraint(item: filterView, attribute: .leading, relatedBy: .equal, toItem: self, attribute: .leading, multiplier: 1, constant: 338)
         
         let constraint2 = NSLayoutConstraint(item: filterView, attribute: .top, relatedBy: .equal, toItem: self, attribute: .top, multiplier: 1, constant: 37)
         
         self.addConstraint(constraint1)
         self.addConstraint(constraint2)
+        
+        filterUI = filterView
     }
     
     //create Search bar UI
@@ -159,7 +165,7 @@ class SearchBarView: UIView, UISearchBarDelegate {
         
         let constraint4 = NSLayoutConstraint(item: searchBarView, attribute: .trailing, relatedBy: .equal, toItem: self, attribute: .trailing, multiplier: 1, constant: -34)
         let constraint3 = NSLayoutConstraint(item: searchBarView, attribute: .height, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1, constant: 50)
-       
+        
         
         self.addConstraint(constraint1)
         self.addConstraint(constraint2)
@@ -191,7 +197,7 @@ class SearchBarView: UIView, UISearchBarDelegate {
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         let newViewModel = viewModel.updateItemList(text: searchText)
         delegate?.updatedViewModel(viewModel: newViewModel )
-
+        
     }
     
     @objc
@@ -199,7 +205,15 @@ class SearchBarView: UIView, UISearchBarDelegate {
     {
         delegate?.drawerMenuOnTapped()
     }
-
+    
+    @objc
+    func onFilterViewTap(){
+        
+        delegate?.filterButtonOnTapped()
+        
+        
+    }
+    
     
 }
 
