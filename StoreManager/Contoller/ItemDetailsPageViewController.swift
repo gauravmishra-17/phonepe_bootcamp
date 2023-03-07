@@ -41,9 +41,14 @@ class ItemDetailsPageViewController: UIViewController {
         //set auto resizing mask
         setAutoresizingMask()
         
+        
         //activate constraints
         NSLayoutConstraint.activate(self.view.constraints)
         
+    }
+    override func viewWillAppear(_ animated: Bool) {
+        navigationController?.navigationBar.isHidden = false
+
     }
     
     func addViews()

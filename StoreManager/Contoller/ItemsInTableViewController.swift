@@ -112,7 +112,6 @@ class ItemsInTableViewController: UIViewController, SliderDelegate, ItemsInTable
     }
     
     func showDetailsPage(item: ItemsViewModel, image: UIImage?) {
-
         let vc = ItemDetailsPageViewController(item: item, image: image)
         vc.view.backgroundColor = .white
         navigationController?.pushViewController(vc, animated: true)
