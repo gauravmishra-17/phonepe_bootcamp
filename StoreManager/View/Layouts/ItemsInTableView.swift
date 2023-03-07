@@ -7,14 +7,21 @@
 
 import UIKit
 
+
+protocol ItemsInTableViewDelegate: AnyObject {
+    func showDetailsPage()
+    
+}
+
 class ItemsInTableView: UIView {
     
     
     
     var itemList:[ItemsViewModel] = []
+    var delegate: ItemsInTableViewDelegate?
     
     var tableView = UITableView()
-//    var sliderView = SliderView(maximumValue: 9, minimumValue: 0)
+ var tapGesture = UITapGestureRecognizer()
     
     init(itemList: [ItemsViewModel]) {
         self.itemList = itemList
@@ -25,11 +32,34 @@ class ItemsInTableView: UIView {
         self.style()
         self.setupConstraints()
         
+        
+        addTapGesture()
+        
         //activate constraints
         NSLayoutConstraint.activate(self.constraints)
         
     }
     
+   func addTapGesture()
+    {
+        tapGesture = UITapGestureRecognizer(target: self, action: #selector(tapEdit(recognizer:)))
+        tableView.addGestureRecognizer(tapGesture)
+    }
+    
+    @objc
+    func tapEdit(recognizer: UITapGestureRecognizer)  {
+        if recognizer.state == UIGestureRecognizer.State.ended {
+            let tapLocation = recognizer.location(in: self.tableView)
+            if let tapIndexPath = self.tableView.indexPathForRow(at: tapLocation) {
+                if let tappedCell = self.tableView.cellForRow(at: tapIndexPath) as?  ItemTableViewCell{
+                    //do what you want to cell here
+                    print(tappedCell.itemNameLabel)
+                    print(tappedCell.itemPriceLabel)
+                    delegate?.showDetailsPage()
+                }
+            }
+        }
+    }
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
