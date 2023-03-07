@@ -7,9 +7,7 @@
 
 import UIKit
 
-class ItemsInTableViewController: UIViewController, SliderDelegate {
-    
-    
+class ItemsInTableViewController: UIViewController, SliderDelegate, ItemsInTableViewDelegate {
 
     //table view initialised
     let tableView  = ItemsInTableView(itemList:[] )
@@ -35,6 +33,7 @@ class ItemsInTableViewController: UIViewController, SliderDelegate {
         
         
         sliderView.sliderDelegate = self
+        tableView.delegate = self
         
         //setUpConstraints
         setUpConstraints()
@@ -73,11 +72,8 @@ class ItemsInTableViewController: UIViewController, SliderDelegate {
     }
     
     func numberOfItemsToShow(size: Int) {
-        print(self.tableView.itemList)
         self.tableView.itemList = ItemsListViewModel(itemList: []).updateItemList(size: size, itemList: unfilteredViewModel.itemList ).itemList
         self.tableView.tableView.reloadData()
-
-        
     }
     
     //setup constraints for table view
@@ -103,7 +99,7 @@ class ItemsInTableViewController: UIViewController, SliderDelegate {
         let trailing = NSLayoutConstraint(item: sliderView , attribute: .trailing, relatedBy: .equal, toItem: self.view, attribute: .trailing, multiplier: 1, constant: 0)
         let top = NSLayoutConstraint(item: sliderView, attribute: .top, relatedBy: .equal, toItem: self.view, attribute: .top, multiplier: 1, constant:595 )
         let width = NSLayoutConstraint(item: sliderView , attribute: .width, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1, constant: view.frame.width )
-        let height = NSLayoutConstraint(item: sliderView , attribute: .height, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1, constant: 200 )
+        let height = NSLayoutConstraint(item: sliderView , attribute: .height, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1, constant: 30 )
 
         
         self.view.addConstraint(leading)
@@ -115,6 +111,11 @@ class ItemsInTableViewController: UIViewController, SliderDelegate {
 
     }
     
+    func showDetailsPage(item: ItemsViewModel, image: UIImage?) {
+        let vc = ItemDetailsPageViewController(item: item, image: image)
+        vc.view.backgroundColor = .white
+        navigationController?.pushViewController(vc, animated: true)
+    }
 }
 
 

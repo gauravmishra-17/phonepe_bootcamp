@@ -36,6 +36,7 @@
 		8D4548DD29AEF78F00A59570 /* ItemData+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D4548DB29AEF78F00A59570 /* ItemData+CoreDataProperties.swift */; };
 		8D4548DF29AF070600A59570 /* CoreDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D4548DE29AF070600A59570 /* CoreDataStack.swift */; };
 		8D4548E129AF07D600A59570 /* CoreDataHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D4548E029AF07D600A59570 /* CoreDataHelper.swift */; };
+		8D52C64729B6E9A3007B5984 /* ItemDetailsPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D52C64629B6E9A3007B5984 /* ItemDetailsPageViewController.swift */; };
 		8D78F2B429B498BB004DCBF2 /* SliderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D78F2B329B498BB004DCBF2 /* SliderView.swift */; };
 		8D78F2B629B59D25004DCBF2 /* PopOverViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D78F2B529B59D25004DCBF2 /* PopOverViewController.swift */; };
 /* End PBXBuildFile section */
@@ -91,6 +92,7 @@
 		8D4548DB29AEF78F00A59570 /* ItemData+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ItemData+CoreDataProperties.swift"; sourceTree = SOURCE_ROOT; };
 		8D4548DE29AF070600A59570 /* CoreDataStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataStack.swift; sourceTree = "<group>"; };
 		8D4548E029AF07D600A59570 /* CoreDataHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataHelper.swift; sourceTree = "<group>"; };
+		8D52C64629B6E9A3007B5984 /* ItemDetailsPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemDetailsPageViewController.swift; sourceTree = "<group>"; };
 		8D78F2B329B498BB004DCBF2 /* SliderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SliderView.swift; sourceTree = "<group>"; };
 		8D78F2B529B59D25004DCBF2 /* PopOverViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopOverViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -203,6 +205,7 @@
 				8D45485C29A3269B00A59570 /* ItemsInTableViewController.swift */,
 				8D45485E29A3273B00A59570 /* ItemsInCollectionViewController.swift */,
 				8D78F2B529B59D25004DCBF2 /* PopOverViewController.swift */,
+				8D52C64629B6E9A3007B5984 /* ItemDetailsPageViewController.swift */,
 			);
 			path = Contoller;
 			sourceTree = "<group>";
@@ -453,6 +456,7 @@
 				8D4548DD29AEF78F00A59570 /* ItemData+CoreDataProperties.swift in Sources */,
 				8D454819299CDF8800A59570 /* HomePageViewController.swift in Sources */,
 				8D4548CE29AEEC9F00A59570 /* StoreManager.xcdatamodeld in Sources */,
+				8D52C64729B6E9A3007B5984 /* ItemDetailsPageViewController.swift in Sources */,
 				8D454815299CDF8800A59570 /* AppDelegate.swift in Sources */,
 				8D45485F29A3273B00A59570 /* ItemsInCollectionViewController.swift in Sources */,
 				8D4548E129AF07D600A59570 /* CoreDataHelper.swift in Sources */,

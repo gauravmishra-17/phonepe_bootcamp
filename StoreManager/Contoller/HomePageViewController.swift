@@ -58,10 +58,18 @@ class HomePageViewController: UITabBarController, SearchBarDelegate, ViewModelDe
         //load viewmodel with data
         viewModel.getItems()
         
+        navigationController?.navigationBar.isHidden = true
+ 
         //activate constraints
         NSLayoutConstraint.activate(self.view.constraints)
         
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        navigationController?.navigationBar.isHidden = true
+
+    }
+    
     public func adaptivePresentationStyle(for controller: UIPresentationController, traitCollection: UITraitCollection) -> UIModalPresentationStyle {
         return .none
     }
