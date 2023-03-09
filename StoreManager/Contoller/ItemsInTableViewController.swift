@@ -71,8 +71,7 @@ class ItemsInTableViewController: UIViewController, SliderDelegate, ItemsInTable
         
     }
     
-    func numberOfItemsToShow(size: Int) {
-        self.tableView.itemList = ItemsListViewModel(itemList: []).updateItemList(size: size, itemList: unfilteredViewModel.itemList ).itemList
+    func numberOfItemsToShow(size: Int) {        self.tableView.itemList = ItemsListViewModel(itemList: []).updateItemList(size: size, itemList: unfilteredViewModel.itemList ).itemList
         self.tableView.tableView.reloadData()
     }
     
