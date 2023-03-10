@@ -624,5 +624,53 @@
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "59BBCE45-3443-4213-B43F-8D999B3F0611"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "StoreManager/Model/services/dtos/ItemDto.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "20"
+            endingLineNumber = "20"
+            landmarkName = "CodingKeys"
+            landmarkType = "13">
+            <Locations>
+               <Location
+                  uuid = "59BBCE45-3443-4213-B43F-8D999B3F0611 - bf7e655c39f66b18"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "StoreManager.ItemDto.CodingKeys.init(rawValue: Swift.String) -&gt; Swift.Optional&lt;StoreManager.ItemDto.CodingKeys&gt;"
+                  moduleName = "StoreManager"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/gaurav.mishra/Documents/projects/StoreManager/StoreManager/Model/services/dtos/ItemDto.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "20"
+                  endingLineNumber = "20"
+                  offsetFromSymbolStart = "112">
+               </Location>
+               <Location
+                  uuid = "59BBCE45-3443-4213-B43F-8D999B3F0611 - 7f4805fdafb3d737"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "StoreManager.ItemDto.CodingKeys.rawValue.getter : Swift.String"
+                  moduleName = "StoreManager"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/gaurav.mishra/Documents/projects/StoreManager/StoreManager/Model/services/dtos/ItemDto.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "20"
+                  endingLineNumber = "20"
+                  offsetFromSymbolStart = "84">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
    </Breakpoints>
 </Bucket>

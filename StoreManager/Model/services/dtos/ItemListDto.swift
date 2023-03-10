@@ -7,8 +7,15 @@
 
 import Foundation
 
-class ItemListDto : Decodable
+struct ItemListDto
 {
     
     let items: [ItemDto]
+}
+
+extension ItemListDto : Decodable
+{
+    enum CodingKeys: String, CodingKey {
+        case items = "items"
+    }
 }

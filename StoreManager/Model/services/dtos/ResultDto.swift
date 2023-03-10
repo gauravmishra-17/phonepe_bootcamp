@@ -7,10 +7,20 @@
 
 import Foundation
 
-class ResultDto : Decodable
+struct ResultDto
 {
     let status: String
     let error: String?
     let data: ItemListDto
     
+}
+
+extension ResultDto : Decodable
+{
+    enum CodingKeys : String, CodingKey
+    {
+        case status = "status"
+        case error = "error"
+        case data = "data"
+    }
 }
